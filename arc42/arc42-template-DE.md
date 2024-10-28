@@ -2,13 +2,7 @@
 
 **Über das Projekt: Postoperative Überwachungs-App**
 
-<!-- LL: Header sollte an das aktuelle Projekt angepasst werden. Ein Verweis auf arc42 sollte trotzdem irgendwo sichtbar sein. -->
-
-Dieses Dokument folgt dem arc42-Template zur Dokumentation von Software- und Systemarchitekturen.
-
-Template Version 8.2 DE. (basiert auf AsciiDoc Version), Januar 2023
-
-Created, maintained and © by Dr. Peter Hruschka, Dr. Gernot Starke and contributors. Siehe <https://arc42.org>.
+Created and maintained by Dustin Scharf and Vincent Putzke.
 
 # Einführung und Ziele
 
@@ -304,3 +298,11 @@ der online-Dokumentation (auf Englisch!).
 |----------------|-------------------|
 | *\<Begriff-1>* | *\<Definition-1>* |
 | *\<Begriff-2*  | *\<Definition-2>* |
+
+# arc42-Template
+
+Dieses Dokument folgt dem arc42-Template zur Dokumentation von Software- und Systemarchitekturen.
+
+Template Version 8.2 DE. (basiert auf AsciiDoc Version), Januar 2023
+
+Created, maintained and © by Dr. Peter Hruschka, Dr. Gernot Starke and contributors. Siehe <https://arc42.org>.
