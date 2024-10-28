@@ -4,9 +4,7 @@ Created and maintained by Dustin Scharf and Vincent Putzke.
 
 # Einführung und Ziele
 
-Die zu entwickelnde App zielt darauf ab, postoperative Komplikationen bei Patienten, insbesondere Sepsis, nach Herzschrittmacher-Operationen frühzeitig zu erkennen. Dies geschieht durch den Einsatz von Wearables, die relevante Vitalparameter kontinuierlich messen und zusammen mit Patient Reported Outcomes (PROs) und elektronischen Gesundheitsakten (EHRs) dem medizinischen Personal visualisiert werden.
-
-<!-- LL: Ziele der Anwendung vorsichtiger formulieren. Primäres Ziel ist es, die Überwachung auch nach der Entlassung noch fortführen zu können. Die Verbleibezeit im Krankenhaus ist für einen Prototyp ggf. zu hochgegriffen oder risikovoll. -->
+Die zu entwickelnde App zielt darauf ab, postoperative Komplikationen bei Patienten, insbesondere Sepsis, nach Herzschrittmacher-Operationen frühzeitig zu erkennen, sobald diese die stetige Überwachung des Krankenhauses verlassen haben. Dies geschieht durch den Einsatz von Wearables, die relevante Vitalparameter kontinuierlich messen und zusammen mit Patient Reported Outcomes (PROs) und elektronischen Gesundheitsakten (EHRs) dem medizinischen Personal visualisiert werden.
 
 Das primäre Ziel der App ist es, die Überwachung der Patienten auch nach der Entlassung fortzusetzen, um eine frühzeitige Erkennung von Komplikationen zu ermöglichen. Dadurch wird die Qualität der Patientenversorgung verbessert und potenzielle Risiken minimiert.
 
@@ -20,12 +18,6 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 
 <!-- LL: Siehe Diskussion am Dienstag zu zusammengehörigen Anforderungen, funktionale Anforderungen und UCs entsprechend anpassen. Hier sollte auch klar werden, woher die EHR-Daten kommen.  -->
 
-Die EHR-Daten werden für den Prototyp durch einen Synthea-Datensatz bereitgestellt, der simulierte Gesundheitsdaten beinhaltet und so eine valide Testumgebung ermöglicht.
-
-Die Anwendung unterstützt das medizinische Personal dabei, Anomalien frühzeitig zu erkennen und das Risiko schwerwiegender postoperativer Folgen zu reduzieren, ohne dass Patienten unnötig lange im Krankenhaus bleiben müssen.
-
-<!-- LL: Wieso ist der obige Abschnitt sinnvoll? Klingt nach einer Wiederholung vom zweiten Abschnitt unter Einführung und Ziele. Wiederholungen/Dopplungen möglichst vermeiden. Bitte zusammenführen. -->
-
 | Use Case | Beschreibung |
 |----------|--------------|
 | UC-01    | Überwachung von Vitalwerten mittels Wearables und Visualisierung im Dashboard. |
@@ -35,19 +27,15 @@ Die Anwendung unterstützt das medizinische Personal dabei, Anomalien frühzeiti
 
 ## Qualitätsziele
 
-<!-- LL: Vereinheitlichung der Sprache (siehe Glossar): App oder Anwendung? Bei Zuverlässigkeit: Echtzeit ist vielleicht übertrieben? Wie viel Verzögerung wäre noch vertretbar, um die Sicherheit der Patient:innen nicht zu gefährden? Vielleicht erstmal allg. formulieren. Zu Sicherheit und Datenschutz: FHIR ist primär ein Format, dass Interoperabilität unterstützt (und nicht Datenschutz). Interoperabilität: Hier sollte FHIR auftauchen. -->
-
 | Ziel                           | Beschreibung |
 |---------------------------------|--------------|
 | **Zuverlässigkeit**             | Die App muss Vitaldaten zuverlässig erfassen und zeitnahe Warnungen generieren, um schnelle medizinische Reaktionen zu ermöglichen. |
 | **Benutzerfreundlichkeit**      | Sowohl Patienten als auch medizinisches Personal müssen die App einfach und intuitiv bedienen können. |
 | **Sicherheit und Datenschutz**  | Die App muss höchsten Sicherheitsstandards entsprechen, um sensible Patientendaten zu schützen. |
-| **Interoperabilität**           | Die App muss den FHIR-Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
+| **Interoperabilität**           | Die App muss einen Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
 | **Erweiterbarkeit**             | Das System sollte so entworfen sein, dass es in Zukunft leicht um neue Funktionen oder Geräte erweitert werden kann. |
 
 ## Stakeholder
-
-<!-- LL: Biotronik Erwartungen auch etwas runterstufen, vielleicht eher: Einblick in prototypische Implementierung von Home Monitoring durch Wearable-Technologie -->
 
 | Rolle/Name                    | Kontakt                      | Erwartungen |
 |-------------------------------|------------------------------|-------------|
@@ -61,8 +49,6 @@ Die Anwendung unterstützt das medizinische Personal dabei, Anomalien frühzeiti
 In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die die Softwarearchitekten bei ihren Design- und Implementierungsentscheidungen sowie im Entwicklungsprozess beachten müssen. Diese Einschränkungen können technischer, organisatorischer oder rechtlicher Natur sein und beeinflussen maßgeblich die Architektur der Anwendung.
 
 ### Technical Constraints
-
-<!-- LL: Da der FHIR Standard hier als Constraint formuliert wird, muss das oben bei Interoperabilität eigentlich nicht erwähnt werden. Erst hier wird sozusagen die Einschränkung gemacht. Es reicht, dies an dieser Stelle klarzustellen. Mir fehlt die Erwähnung der Sepsisrichtlinien, bitte überlegen, wo diese erwähnt werden sollen, ggf. auch schon viel früher im Dokument. Die Hardware wird nicht von Biotronik, sondern vom Lehrstuhl bereitgestellt. Die Anforderungen an die App sind vom Lehrstuhle in Zusammenarbeit mit Biotronik entstanden. -->
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
@@ -100,6 +86,23 @@ Dieser Abschnitt beschreibt den Systemkontext und grenzt das System von seinen K
 
 Die post-operative Überwachungs-App kommuniziert mit folgenden Partnern:
 
+```mermaid
+    flowchart TD
+        A[Post-operative Überwachungs-App]
+        B[Patienten]
+        C[Medizinisches Personal]
+        D[EHR-System des Krankenhauses]
+        E[Wearable-Geräte]
+
+        B -->|PROs| A
+        A -->|Warnungen & Rückmeldungen| B
+        C -->|Abfragen| A
+        A -->|Visualisierte Daten & Benachrichtigungen| C
+        D -->|EHR-Daten| A
+        A -->|Aktualisierte Vitaldaten| D
+        E -->|Vitaldaten| A
+```
+
 | Kommunikationspartner    | Eingaben (Input)                                        | Ausgaben (Output)                                        |
 |--------------------------|--------------------------------------------------------|----------------------------------------------------------|
 | **Patienten**             | Eingabe von PROs (z.B. Symptome, Wohlbefinden) über die mobile App | Warnungen und Rückmeldungen über Gesundheitszustand      |
@@ -107,13 +110,25 @@ Die post-operative Überwachungs-App kommuniziert mit folgenden Partnern:
 | **EHR-System des Krankenhauses**| Elektronische Gesundheitsdaten der Patienten (EHR-Daten) | Aktualisierte Vitaldaten der Patienten zur Integration in das EHR |
 | **Wearable-Geräte (Samsung Galaxy Watch 6)**| Kontinuierlich gemessene Vitaldaten (z.B. Herzfrequenz, Temperatur) | Gesendete Vitaldaten an die App zur Visualisierung und Analyse |
 
-<!-- LL: Die Daten aus dem Krankenhaus werden insbesondere in Form eines Synthea-Datensatzes zur Verfügung gestellt. Mehr dazu dann am kommenden Dienstag. -->
-
 Für die Tests wird ein Synthea-Datensatz bereitgestellt, der Gesundheitsdaten in verschiedenen Stufen enthält und als valide Grundlage zur Prototypentwicklung dient.
 
 ## Technischer Kontext
 
 Das System nutzt verschiedene technische Schnittstellen, um die relevanten Daten zu übertragen:
+
+```mermaid
+flowchart TD
+    A[Post-operative Überwachungs-App]
+    B[Patienten]
+    C[Medizinisches Personal]
+    D[EHR-System des Krankenhauses]
+    E[Wearables]
+
+    B <-->|HTTPS, REST API| A
+    C <-->|HTTPS, REST API| A
+    D <-->|FHIR Standard| A
+    E <-->|Bluetooth LE, Wear OS API| A
+```
 
 | Kommunikationspartner      | Kanal                                      | Protokoll/Technologie                      |
 |----------------------------|--------------------------------------------|--------------------------------------------|
@@ -121,8 +136,6 @@ Das System nutzt verschiedene technische Schnittstellen, um die relevanten Daten
 | **Medizinisches Personal**  | Web-basierte Benutzeroberfläche            | HTTPS, REST API                            |
 | **EHR-System des Krankenhauses**| Direkte Integration über Krankenhausnetzwerk | FHIR (Fast Healthcare Interoperability Resources) Standard |
 | **Wearables (Samsung Galaxy Watch 6)**| Bluetooth-Verbindung zu Smartphones     | Bluetooth LE, Wear OS API                  |
-
-<!-- LL: Wir werden in unserem Kontext keine direkte Integration über Krankenhausnetzwerk haben, sondern den Synthea Datensatz zur Verfügung stellen in verschiedenen Stufen. Erstmal offline, und dann ggf. serverbasiert, so als könnten wir auf das Krankenhausnetz zugreifen. -->
 
 Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierten Umgebung bereitgestellt, um eine testweise Integration zu simulieren.
 
