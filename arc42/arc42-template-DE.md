@@ -286,7 +286,34 @@ der online-Dokumentation (auf Englisch!).
 
 ## Qualitätsbaum
 
+```mermaid
+graph TD
+    A[Qualität] --> B[Funktionale Eignung]
+    A --> C[Zuverlässigkeit]
+    A --> D[Benutzbarkeit]
+    A --> E[Sicherheit]
+    A --> F[Wartbarkeit]
+    B --> B1[Funktionale Vollständigkeit]
+    B --> B2[Funktionale Korrektheit]
+    C --> C1[Verfügbarkeit]
+    C --> C2[Fehlertoleranz]
+    D --> D1[Erlernbarkeit]
+    D --> D2[Bedienbarkeit]
+    E --> E1[Vertraulichkeit]
+    E --> E2[Integrität]
+    F --> F1[Modularität]
+    F --> F2[Testbarkeit]
+```
+
 ## Qualitätsszenarien
+
+| Ziel                           | Beschreibung |
+|---------------------------------|--------------|
+| **Zuverlässigkeit**             | Die Anwendung ist 99,9% der Zeit verfügbar, mit einer maximalen Ausfallzeit von 10 Minuten pro Monat. Bei Ausfall eines Wearable-Sensors können die Daten manuell eingegeben werden, ohne die Funktionalität zu beeinträchtigen. |
+| **Benutzerfreundlichkeit**      | Medizinisches Personal kann nach maximal 2 Stunden Einweisung die Anwendung effektiv nutzen. Die Eingabe von PROs durch Patienten dauert im Durchschnitt nicht länger als 3 Minuten. |
+| **Sicherheit und Datenschutz**  | Alle Patientendaten werden gemäß DSGVO-Richtlinien verschlüsselt gespeichert und übertragen. Jeder Zugriff auf Patientendaten wird protokolliert und ist nachverfolgbar. |
+| **Interoperabilität**           | Die Anwendung integriert erfolgreich Daten aus Wearables, PROs und EHR-Daten innerhalb von 5 Minuten nach der Dateneingabe. |
+| **Erweiterbarkeit**             | Neue Wearable-Geräte können innerhalb von 2 Arbeitstagen in das System integriert werden. Automatisierte Tests decken mindestens 80% des Codes ab, um die Wartbarkeit zu gewährleisten. |
 
 # Risiken und technische Schulden
 
@@ -294,8 +321,18 @@ der online-Dokumentation (auf Englisch!).
 
 | Begriff        | Definition        |
 |----------------|-------------------|
-| *\<Begriff-1>* | *\<Definition-1>* |
-| *\<Begriff-2*  | *\<Definition-2>* |
+| EHR            | Electronic Health Record (Elektronische Patientenakte) |
+| PRO            | Patient Reported Outcome |
+| Sepsis         | Lebensbedrohliche Komplikation einer Infektion, die zu Organversagen führen kann |
+| Wearable       | Am Körper getragenes elektronisches Gerät zur Messung von Gesundheitsdaten |
+| DSGVO          | Datenschutz-Grundverordnung |
+| Frühdiagnose   | Erkennung einer Krankheit in einem frühen Stadium |
+| Herzschrittmacher | Implantierbares medizinisches Gerät zur Regulierung des Herzrhythmus |
+| Postoperative Komplikation | Unerwünschte Folge nach einer Operation |
+| Synthea-Datensatz | Synthetisch generierter Datensatz für medizinische Forschung und Entwicklung |
+| Medizinisches Personal | Ärzte, Pflegekräfte und andere Gesundheitsfachkräfte |
+| Visualisierung  | Grafische Darstellung von Daten zur besseren Verständlichkeit |
+| Richtlinie     | Festgelegte Regeln oder Grenzwerte für medizinische Parameter |
 
 # arc42-Template
 
