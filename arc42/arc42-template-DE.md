@@ -1,20 +1,22 @@
 # 
 
-**Über arc42**
+**Über das Projekt: Postoperative Überwachungs-App**
 
-arc42, das Template zur Dokumentation von Software- und
-Systemarchitekturen.
+<!-- LL: Header sollte an das aktuelle Projekt angepasst werden. Ein Verweis auf arc42 sollte trotzdem irgendwo sichtbar sein. -->
+
+Dieses Dokument folgt dem arc42-Template zur Dokumentation von Software- und Systemarchitekturen.
 
 Template Version 8.2 DE. (basiert auf AsciiDoc Version), Januar 2023
 
-Created, maintained and © by Dr. Peter Hruschka, Dr. Gernot Starke and
-contributors. Siehe <https://arc42.org>.
+Created, maintained and © by Dr. Peter Hruschka, Dr. Gernot Starke and contributors. Siehe <https://arc42.org>.
 
 # Einführung und Ziele
 
 Die zu entwickelnde App zielt darauf ab, postoperative Komplikationen bei Patienten, insbesondere Sepsis, nach Herzschrittmacher-Operationen frühzeitig zu erkennen. Dies geschieht durch den Einsatz von Wearables, die relevante Vitalparameter kontinuierlich messen und zusammen mit Patient Reported Outcomes (PROs) und elektronischen Gesundheitsakten (EHRs) dem medizinischen Personal visualisiert werden.
 
-Die Anwendung wird entwickelt, um die Qualität der Patientenversorgung zu verbessern, die Überwachungszeit nach Operationen zu reduzieren und potenzielle Komplikationen rechtzeitig zu identifizieren.
+<!-- LL: Ziele der Anwendung vorsichtiger formulieren. Primäres Ziel ist es, die Überwachung auch nach der Entlassung noch fortführen zu können. Die Verbleibezeit im Krankenhaus ist für einen Prototyp ggf. zu hochgegriffen oder risikovoll. -->
+
+Das primäre Ziel der App ist es, die Überwachung der Patienten auch nach der Entlassung fortzusetzen, um eine frühzeitige Erkennung von Komplikationen zu ermöglichen. Dadurch wird die Qualität der Patientenversorgung verbessert und potenzielle Risiken minimiert.
 
 ## Aufgabenstellung
 Die Anwendung muss folgende funktionale Anforderungen erfüllen:
@@ -24,7 +26,13 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 - **Warnsystem** zur Benachrichtigung des medizinischen Personals bei Abweichungen von Normwerten.
 - **Visualisierung der Gesundheitsdaten** für das medizinische Personal in übersichtlichen Dashboards.
 
-Die Anwendung soll das medizinische Personal bei der frühzeitigen Erkennung von Sepsis und anderen Komplikationen unterstützen, um so die Patientenversorgung zu verbessern und das Risiko schwerwiegender postoperativer Folgen zu minimieren.
+<!-- LL: Siehe Diskussion am Dienstag zu zusammengehörigen Anforderungen, funktionale Anforderungen und UCs entsprechend anpassen. Hier sollte auch klar werden, woher die EHR-Daten kommen.  -->
+
+Die EHR-Daten werden für den Prototyp durch einen Synthea-Datensatz bereitgestellt, der simulierte Gesundheitsdaten beinhaltet und so eine valide Testumgebung ermöglicht.
+
+Die Anwendung unterstützt das medizinische Personal dabei, Anomalien frühzeitig zu erkennen und das Risiko schwerwiegender postoperativer Folgen zu reduzieren, ohne dass Patienten unnötig lange im Krankenhaus bleiben müssen.
+
+<!-- LL: Wieso ist der obige Abschnitt sinnvoll? Klingt nach einer Wiederholung vom zweiten Abschnitt unter Einführung und Ziele. Wiederholungen/Dopplungen möglichst vermeiden. Bitte zusammenführen. -->
 
 | Use Case | Beschreibung |
 |----------|--------------|
@@ -35,22 +43,26 @@ Die Anwendung soll das medizinische Personal bei der frühzeitigen Erkennung von
 
 ## Qualitätsziele
 
+<!-- LL: Vereinheitlichung der Sprache (siehe Glossar): App oder Anwendung? Bei Zuverlässigkeit: Echtzeit ist vielleicht übertrieben? Wie viel Verzögerung wäre noch vertretbar, um die Sicherheit der Patient:innen nicht zu gefährden? Vielleicht erstmal allg. formulieren. Zu Sicherheit und Datenschutz: FHIR ist primär ein Format, dass Interoperabilität unterstützt (und nicht Datenschutz). Interoperabilität: Hier sollte FHIR auftauchen. -->
+
 | Ziel                           | Beschreibung |
 |---------------------------------|--------------|
-| **Zuverlässigkeit**             | Die App muss Vitaldaten zuverlässig erfassen und Warnungen in Echtzeit generieren, um schnelle medizinische Reaktionen zu ermöglichen. |
+| **Zuverlässigkeit**             | Die App muss Vitaldaten zuverlässig erfassen und zeitnahe Warnungen generieren, um schnelle medizinische Reaktionen zu ermöglichen. |
 | **Benutzerfreundlichkeit**      | Sowohl Patienten als auch medizinisches Personal müssen die App einfach und intuitiv bedienen können. |
-| **Sicherheit und Datenschutz**  | Die App muss höchsten Sicherheitsstandards entsprechen, um sensible Patientendaten zu schützen. Dies schließt die Einhaltung von FHIR und anderen relevanten Standards ein. |
-| **Interoperabilität**           | Die App muss mit den Krankenhaus-EHR-Systemen kompatibel sein, um eine reibungslose Integration und Datenübertragung zu gewährleisten. |
+| **Sicherheit und Datenschutz**  | Die App muss höchsten Sicherheitsstandards entsprechen, um sensible Patientendaten zu schützen. |
+| **Interoperabilität**           | Die App muss den FHIR-Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
 | **Erweiterbarkeit**             | Das System sollte so entworfen sein, dass es in Zukunft leicht um neue Funktionen oder Geräte erweitert werden kann. |
 
 ## Stakeholder
+
+<!-- LL: Biotronik Erwartungen auch etwas runterstufen, vielleicht eher: Einblick in prototypische Implementierung von Home Monitoring durch Wearable-Technologie -->
 
 | Rolle/Name                    | Kontakt                      | Erwartungen |
 |-------------------------------|------------------------------|-------------|
 | **Medizinisches Personal**     | Krankenhaus, z.B. Dr. Meier   | Zuverlässige und rechtzeitige Warnungen bei Komplikationen, klare Visualisierungen der Gesundheitsdaten. |
 | **Patienten**                  | Herzschrittmacher-Patienten   | Einfache Bedienbarkeit der App zur Eingabe von PROs, Vertrauen in die Datensicherheit. |
 | **Entwicklungsteam**           | Softwareentwickler der BTU    | Klare Spezifikationen und Anforderungen zur Umsetzung der App. |
-| **Biotronik**                  | Industriepartner              | Erfolgreiche Implementierung und Integration der Wearable-Technologie. |
+| **Biotronik**                  | Industriepartner              | Einblicke in die prototypische Implementierung von Home Monitoring durch Wearable-Technologie. |
 | **Datenschutzbeauftragter**    | Interne Datenschutzabteilung  | Einhaltung der Datenschutzrichtlinien, insbesondere bei der Nutzung sensibler Gesundheitsdaten. |
 
 # Randbedingungen
@@ -58,22 +70,27 @@ In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die di
 
 ### Technical Constraints
 
+<!-- LL: Da der FHIR Standard hier als Constraint formuliert wird, muss das oben bei Interoperabilität eigentlich nicht erwähnt werden. Erst hier wird sozusagen die Einschränkung gemacht. Es reicht, dies an dieser Stelle klarzustellen. Mir fehlt die Erwähnung der Sepsisrichtlinien, bitte überlegen, wo diese erwähnt werden sollen, ggf. auch schon viel früher im Dokument. Die Hardware wird nicht von Biotronik, sondern vom Lehrstuhl bereitgestellt. Die Anforderungen an die App sind vom Lehrstuhle in Zusammenarbeit mit Biotronik entstanden. -->
+
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
 | **Einhaltung des FHIR-Standards**            | Die Anwendung muss den FHIR (Fast Healthcare Interoperability Resources)-Standard für den Austausch von Gesundheitsdaten erfüllen, um die Interoperabilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
-| **Wearable-Integration**                     | Die Anwendung muss mit den bereitgestellten Samsung Galaxy Watch 6 Wearables und den Samsung Galaxy A15 Smartphones kompatibel sein, um die erfassten Vitaldaten zu integrieren. |
+| **Wearable-Integration**                     | Die Anwendung muss mit den vom Lehrstuhl bereitgestellten Samsung Galaxy Watch 6 Wearables und Samsung Galaxy A15 Smartphones kompatibel sein. |
 | **Mobile Plattform**                         | Die Anwendung muss auf Android-Geräten (Android 14) lauffähig sein und den Android Health Services und Wear OS-APIs folgen. |
 | **Sicherheitsrichtlinien**                   | Es müssen strenge Sicherheitsstandards, wie z.B. Verschlüsselung von Gesundheitsdaten, Passwortschutz und Zugriffskontrollen, eingehalten werden. |
+| **Sepsisrichtlinien**                        | Die Anwendung soll den aktuellen medizinischen Sepsisrichtlinien entsprechen, um eine präzise und evidenzbasierte Überwachung zu ermöglichen. |
 
 ### Organizational and Political Constraints
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
 | **Datenschutzrichtlinien**                   | Die App muss die EU-Datenschutz-Grundverordnung (DSGVO) einhalten, insbesondere in Bezug auf die Verarbeitung und Speicherung sensibler Gesundheitsdaten. |
-| **Zusammenarbeit mit Biotronik**             | Die Anforderungen und Richtlinien des Partners Biotronik müssen berücksichtigt werden, da dieser die Hardware (Wearables) bereitstellt und die Kooperation die Projektziele beeinflusst. |
+| **Zusammenarbeit mit Biotronik**             | Die Anforderungen und Richtlinien des Partners Biotronik müssen berücksichtigt werden, da dieser die Anforderungen an die Wearables und das Monitoring beeinflusst. |
 | **Einhaltung der BTU-Richtlinien**           | Die App-Entwicklung muss den universitätsinternen Vorgaben und Prüfungsrichtlinien für studentische Projekte entsprechen, z.B. in Bezug auf Dokumentation und Code-Qualität. |
 
 ### Conventions
+
+<!-- LL: techn. Spezifikationen werden nur von den Architects erstellt, nicht von den SWP Studierenden. Bitte bei den Stakeholdern einen Unterschied machen zwischen Studierenden im Softwarepraktikum und die unterschiedliche Arten von Coaches (Agile bzw. Architects & Quality Coaches) -->
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
@@ -85,8 +102,9 @@ In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die di
 
 Dieser Abschnitt beschreibt den Systemkontext und grenzt das System von seinen Kommunikationspartnern (Nutzern und anderen Systemen) ab. Es wird definiert, welche externen Schnittstellen für den Austausch von Daten relevant sind.
 
-## Fachlicher Kontext
+<!-- LL: Visualisierungen des Kontexts hinzufügen, siehe HTML Sanity Checker für Beispieldiagramme -->
 
+## Fachlicher Kontext
 
 Die post-operative Überwachungs-App kommuniziert mit folgenden Partnern:
 
@@ -97,7 +115,9 @@ Die post-operative Überwachungs-App kommuniziert mit folgenden Partnern:
 | **EHR-System des Krankenhauses**| Elektronische Gesundheitsdaten der Patienten (EHR-Daten) | Aktualisierte Vitaldaten der Patienten zur Integration in das EHR |
 | **Wearable-Geräte (Samsung Galaxy Watch 6)**| Kontinuierlich gemessene Vitaldaten (z.B. Herzfrequenz, Temperatur) | Gesendete Vitaldaten an die App zur Visualisierung und Analyse |
 
-Alle Stakeholder sollten verstehen, welche Daten zwischen dem System und seiner Umgebung ausgetauscht werden. Die Patienten geben relevante Gesundheitsdaten über die App ein, während das medizinische Personal Zugriff auf visualisierte Informationen und Warnungen hat. Gleichzeitig werden Wearable-Daten kontinuierlich erfasst und mit den EHR-Systemen synchronisiert.
+<!-- LL: Die Daten aus dem Krankenhaus werden insbesondere in Form eines Synthea-Datensatzes zur Verfügung gestellt. Mehr dazu dann am kommenden Dienstag. -->
+
+Für die Tests wird ein Synthea-Datensatz bereitgestellt, der Gesundheitsdaten in verschiedenen Stufen enthält und als valide Grundlage zur Prototypentwicklung dient.
 
 ## Technischer Kontext
 
@@ -110,7 +130,9 @@ Das System nutzt verschiedene technische Schnittstellen, um die relevanten Daten
 | **EHR-System des Krankenhauses**| Direkte Integration über Krankenhausnetzwerk | FHIR (Fast Healthcare Interoperability Resources) Standard |
 | **Wearables (Samsung Galaxy Watch 6)**| Bluetooth-Verbindung zu Smartphones     | Bluetooth LE, Wear OS API                  |
 
-Die technische Architektur muss sicherstellen, dass alle Kommunikationspartner über sichere und zuverlässige Kanäle miteinander verbunden sind. Die Wahl der Protokolle und Übertragungstechnologien richtet sich nach den Anforderungen an Interoperabilität, Sicherheit und Performance.
+<!-- LL: Wir werden in unserem Kontext keine direkte Integration über Krankenhausnetzwerk haben, sondern den Synthea Datensatz zur Verfügung stellen in verschiedenen Stufen. Erstmal offline, und dann ggf. serverbasiert, so als könnten wir auf das Krankenhausnetz zugreifen. -->
+
+Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierten Umgebung bereitgestellt, um eine testweise Integration zu simulieren.
 
 **\<Diagramm oder Tabelle>**
 
