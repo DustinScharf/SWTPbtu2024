@@ -1,6 +1,4 @@
-# 
-
-**Über das Projekt: Postoperative Überwachungs-App**
+# Über das Projekt: Postoperative Überwachungs-App
 
 Created and maintained by Dustin Scharf and Vincent Putzke.
 
