@@ -198,16 +198,17 @@ Begründung
 *\<Erläuternder Text>*
 
 Enthaltene Bausteine  
-1. Datenerfassung
-    Verantwortlich für die Erfassung von Wearable-Daten und Patient Reported Outcomes (PROs)
-2. Datenintegration
-    Integriert Daten aus Wearables, PROs und EHR-Systemen
-3. Analyse und Warnung
-    Führt Sepsis-Früherkennung durch und generiert Warnungen
-4. Benutzeroberfläche
-    Stellt Daten für medizinisches Personal dar und ermöglicht Interaktion
-5. Sicherheit und Datenschutz
-    Gewährleistet Datensicherheit und Einhaltung von Datenschutzrichtlinien
+
+1. Datenerfassung: 
+    - Verantwortlich für die Erfassung von Wearable-Daten und Patient Reported Outcomes (PROs)
+2. Datenintegration:
+    - Integriert Daten aus Wearables, PROs und EHR-Systemen
+3. Analyse und Warnung:
+    - Führt Sepsis-Früherkennung durch und generiert Warnungen
+4. Benutzeroberfläche:
+    - Stellt Daten für medizinisches Personal dar und ermöglicht Interaktion
+5. Sicherheit und Datenschutz:
+    - Gewährleistet Datensicherheit und Einhaltung von Datenschutzrichtlinien
 
 Wichtige Schnittstellen  
 *\<Beschreibung wichtiger Schnittstellen>*
@@ -220,18 +221,15 @@ graph TD
     B --> B2[PRO-Eingabemodul]
     B --> B3[Datenvalidierung]
 ```
-
-*\<Zweck/Verantwortung>*
-
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
+1. Wearable-Schnittstelle:
+    - Diese Komponente ermöglicht die Kommunikation zwischen der Anwendung und den Wearable-Geräten. Sie erfasst kontinuierlich relevante Vitalparameter wie Herzfrequenz, Temperatur und andere Sepsis-indikative Werte.
+    - Die Schnittstelle sorgt dafür, dass die Daten in Echtzeit übertragen und verarbeitet werden.
+2. PRO-Eingabemodul:
+    - Dieses Modul erlaubt es den Patienten, ihre eigenen Gesundheitsdaten über die mobile Anwendung einzugeben.
+    - Es umfasst Felder für Patient Reported Outcomes (PROs), wie subjektive Symptome oder Lebensqualität, und ist darauf ausgelegt, eine benutzerfreundliche Eingabe zu ermöglichen.
+3. Datenvalidierung:
+    - Die Datenvalidierung stellt sicher, dass alle erfassten und eingegebenen Daten korrekt und vollständig sind.
+    - Diese Komponente prüft auf Plausibilität und Konsistenz der Daten, um Fehler zu minimieren und die Qualität der Informationen zu gewährleisten.
 
 ### Datenintegration
 
@@ -242,17 +240,15 @@ graph TD
     C --> C3[Datenspeicher]
 ```
 
-*\<Zweck/Verantwortung>*
-
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
+1. EHR-Connector:
+    - Der EHR-Connector integriert elektronische Gesundheitsakten (EHR) der Patienten in das System.
+    - Er ermöglicht den Zugriff auf historische Gesundheitsdaten und sorgt dafür, dass alle relevanten Informationen für die Analyse zur Verfügung stehen.
+2. Daten-Harmonisierung:
+    - Diese Komponente sorgt dafür, dass die Daten aus verschiedenen Quellen (Wearables, PROs, EHR) in ein einheitliches Format überführt werden.
+    - Sie bereinigt und standardisiert die Daten, um eine konsistente Analyse zu ermöglichen.
+3. Datenspeicher:
+    - Der Datenspeicher ist verantwortlich für die sichere Ablage aller erfassten und integrierten Daten.
+    - Er gewährleistet sowohl die Verfügbarkeit als auch die Sicherheit der Informationen und ermöglicht eine effiziente Datenabfrage.
 
 ### Analyse und Warnung
 
@@ -263,17 +259,15 @@ graph TD
     D --> D3[Trendanalyse]
 ```
 
-*\<Zweck/Verantwortung>*
-
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
+1. Sepsis-Erkennungsalgorithmus:
+    - Dieser Algorithmus analysiert die gesammelten Vitalparameter und Patientendaten in Echtzeit, um Anzeichen einer Sepsis frühzeitig zu erkennen.
+    - Er nutzt definierte Schwellenwerte und Mustererkennung zur Identifikation von Risikopatienten.
+2. Warnungsgenerator:
+    - Der Warnungsgenerator erstellt Benachrichtigungen für das medizinische Personal, wenn kritische Werte überschritten werden oder Anomalien festgestellt werden.
+    - Diese Funktion ist entscheidend für eine schnelle Reaktion auf potenzielle Komplikationen.
+3. Trendanalyse:
+    - Diese Komponente analysiert den zeitlichen Verlauf der Gesundheitsdaten eines Patienten, um Veränderungen im Gesundheitszustand zu identifizieren.
+    - Sie unterstützt das medizinische Personal dabei, Muster zu erkennen und fundierte Entscheidungen zu treffen.
 
 ### Benutzeroberfläche
 
@@ -284,17 +278,15 @@ graph TD
     E --> E3[Warnungsmanagement]
 ```
 
-*\<Zweck/Verantwortung>*
-
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
+1. Patientenübersicht:
+    - Die Patientenübersicht bietet dem medizinischen Personal einen schnellen Überblick über alle überwachten Patienten sowie deren aktuelle Vitalparameter und Statusanzeigen.
+    - Sie ist so gestaltet, dass sie wichtige Informationen auf einen Blick darstellt.
+2. Detailansicht:
+    - In der Detailansicht können medizinische Fachkräfte tiefere Einblicke in die Gesundheitsdaten einzelner Patienten erhalten.
+    - Hier werden historische Daten, Trends sowie spezifische Warnungen angezeigt, um eine umfassende Analyse zu ermöglichen.
+3. Warnungsmanagement:
+    - Diese Funktion ermöglicht es dem medizinischen Personal, Warnungen zu verwalten und darauf zu reagieren.
+    - Sie bietet Optionen zur Dokumentation von Maßnahmen und zur Nachverfolgung von Alarmen über Zeiträume hinweg.
 
 ### Sicherheit und Datenschutz
 
@@ -305,17 +297,15 @@ graph TD
     F --> F3[Audit-Logging]
 ```
 
-*\<Zweck/Verantwortung>*
-
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
+1. Verschlüsselung:
+    - Die Verschlüsselung schützt alle sensiblen Daten während der Übertragung und Speicherung vor unbefugtem Zugriff.
+    - Dies ist entscheidend für den Schutz der Privatsphäre der Patienten gemäß den geltenden Datenschutzbestimmungen.
+2. Zugriffsmanagement:
+    - Das Zugriffsmanagement regelt, welche Benutzergruppen auf welche Funktionen und Daten zugreifen können.
+    - Es stellt sicher, dass nur autorisierte Personen Zugang zu sensiblen Informationen haben.
+3. Audit-Logging:
+    - Das Audit-Logging verfolgt alle Zugriffe auf das System sowie Änderungen an Daten oder Einstellungen.
+    - Diese Funktion dient der Nachvollziehbarkeit und hilft bei der Identifizierung von Sicherheitsvorfällen oder Missbrauch.
 
 ## Ebene 2
 
