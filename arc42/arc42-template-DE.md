@@ -147,22 +147,79 @@ Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierte
 
 # 4. Lösungsstrategie
 
+1. Inkrementelle Entwicklung mit MVP-Ansatz
+    Entwicklung in iterativen Zyklen, beginnend mit einem Minimum Viable Product (MVP)
+    Fokus auf die Kernfunktionalitäten: Wearable-Datenerfassung, PRO-Eingabe, Datenintegration und Warnungssystem
+2. User-Centricity und Usability Engineering
+    Frühzeitige und kontinuierliche Einbindung von medizinischem Personal in den Entwicklungsprozess
+    Iteratives Usability-Testing zur Optimierung der Benutzeroberfläche
+    Berücksichtigung von haptischem Feedback (z.B. Drehräder) neben Touchscreen-Bedienung
+3. Model-Driven Software Development (MDSD)
+    Einsatz von Domänenmodellen zur Codegenerierung
+    Nutzung von Domain-Specific Languages (DSLs) für effiziente Entwicklung und Wartung
+4. Modellbasiertes Testen und Qualitätssicherung
+    Implementierung von modellbasiertem Testen zur frühzeitigen Fehlererkennung
+    Einsatz von Model Checking zur Konsistenzprüfung von Systemmodellen
+    Integration von automatisierten Tests in den Entwicklungsprozess
+5. Datenintegration und -verarbeitung
+    Entwicklung einer robusten Architektur zur Integration von Wearable-Daten, PROs und EHR-Daten
+    Implementierung von Algorithmen zur Sepsis-Früherkennung basierend auf integrierten Daten
+6. Sicherheit und Datenschutz
+    Implementierung umfassender Cybersecurity-Maßnahmen für die Vernetzung mit Wearables
+    Einhaltung von Datenschutzrichtlinien (DSGVO) durch Privacy-by-Design-Ansatz
+7. Skalierbare und erweiterbare Architektur
+    Design einer modularen Architektur zur einfachen Erweiterung um zusätzliche Funktionen
+    Vorbereitung auf zukünftige IoMT (Internet of Medical Things) Entwicklungen
+8. Dokumentation und regulatorische Compliance
+    Integration von teilautomatisierter Erzeugung von Anforderungsdokumenten
+    Sicherstellung der Rückverfolgbarkeit zwischen Anforderungen, Design und Tests
+    Einhaltung aller relevanten regulatorischen Anforderungen für Medizinprodukte-Software
+9. Visualisierung und Benutzeroberfläche
+    Entwicklung intuitiver Visualisierungen für die Übersicht und Detailansicht der Patientendaten
+    Klare Unterscheidung zwischen EHR-Daten und Wearable-Daten in der Darstellung
+10. Connectivity und Telemedizin
+    Integration von Telemedizin-Funktionen, inspiriert vom Home Monitoring System
+    Entwicklung von Schnittstellen für eine mögliche zukünftige Fernintervention
+
 # 5. Bausteinsicht
 
 ## Whitebox Gesamtsystem
 
-***\<Übersichtsdiagramm>***
+```mermaid
+graph TD
+    A[Frühdiagnose-System] --> B[Datenerfassung]
+    A --> C[Datenintegration]
+    A --> D[Analyse und Warnung]
+    A --> E[Benutzeroberfläche]
+    A --> F[Sicherheit und Datenschutz]
+```
 
 Begründung  
 *\<Erläuternder Text>*
 
 Enthaltene Bausteine  
-*\<Beschreibung der enthaltenen Bausteine (Blackboxen)>*
+1. Datenerfassung
+    Verantwortlich für die Erfassung von Wearable-Daten und Patient Reported Outcomes (PROs)
+2. Datenintegration
+    Integriert Daten aus Wearables, PROs und EHR-Systemen
+3. Analyse und Warnung
+    Führt Sepsis-Früherkennung durch und generiert Warnungen
+4. Benutzeroberfläche
+    Stellt Daten für medizinisches Personal dar und ermöglicht Interaktion
+5. Sicherheit und Datenschutz
+    Gewährleistet Datensicherheit und Einhaltung von Datenschutzrichtlinien
 
 Wichtige Schnittstellen  
 *\<Beschreibung wichtiger Schnittstellen>*
 
-### \<Name Blackbox 1>
+### Datenerfassung
+
+```mermaid
+graph TD
+    B[Datenerfassung] --> B1[Wearable-Schnittstelle]
+    B --> B2[PRO-Eingabemodul]
+    B --> B3[Datenvalidierung]
+```
 
 *\<Zweck/Verantwortung>*
 
@@ -176,49 +233,93 @@ Wichtige Schnittstellen
 
 *\<(optional) Offene Punkte/Probleme/Risiken>*
 
-### \<Name Blackbox 2>
+### Datenintegration
 
-*\<Blackbox-Template>*
+```mermaid
+graph TD
+    C[Datenintegration] --> C1[EHR-Connector]
+    C --> C2[Daten-Harmonisierung]
+    C --> C3[Datenspeicher]
+```
 
-### \<Name Blackbox n>
+*\<Zweck/Verantwortung>*
 
-*\<Blackbox-Template>*
+*\<Schnittstelle(n)>*
 
-### \<Name Schnittstelle 1>
+*\<(Optional) Qualitäts-/Leistungsmerkmale>*
 
-…
+*\<(Optional) Ablageort/Datei(en)>*
 
-### \<Name Schnittstelle m>
+*\<(Optional) Erfüllte Anforderungen>*
+
+*\<(optional) Offene Punkte/Probleme/Risiken>*
+
+### Analyse und Warnung
+
+```mermaid
+graph TD
+    D[Analyse und Warnung] --> D1[Sepsis-Erkennungsalgorithmus]
+    D --> D2[Warnungsgenerator]
+    D --> D3[Trendanalyse]
+```
+
+*\<Zweck/Verantwortung>*
+
+*\<Schnittstelle(n)>*
+
+*\<(Optional) Qualitäts-/Leistungsmerkmale>*
+
+*\<(Optional) Ablageort/Datei(en)>*
+
+*\<(Optional) Erfüllte Anforderungen>*
+
+*\<(optional) Offene Punkte/Probleme/Risiken>*
+
+### Benutzeroberfläche
+
+```mermaid
+graph TD
+    E[Benutzeroberfläche] --> E1[Patientenübersicht]
+    E --> E2[Detailansicht]
+    E --> E3[Warnungsmanagement]
+```
+
+*\<Zweck/Verantwortung>*
+
+*\<Schnittstelle(n)>*
+
+*\<(Optional) Qualitäts-/Leistungsmerkmale>*
+
+*\<(Optional) Ablageort/Datei(en)>*
+
+*\<(Optional) Erfüllte Anforderungen>*
+
+*\<(optional) Offene Punkte/Probleme/Risiken>*
+
+### Sicherheit und Datenschutz
+
+```mermaid
+graph TD
+    F[Sicherheit und Datenschutz] --> F1[Verschlüsselung]
+    F --> F2[Zugriffsmanagement]
+    F --> F3[Audit-Logging]
+```
+
+*\<Zweck/Verantwortung>*
+
+*\<Schnittstelle(n)>*
+
+*\<(Optional) Qualitäts-/Leistungsmerkmale>*
+
+*\<(Optional) Ablageort/Datei(en)>*
+
+*\<(Optional) Erfüllte Anforderungen>*
+
+*\<(optional) Offene Punkte/Probleme/Risiken>*
 
 ## Ebene 2
 
-### Whitebox *\<Baustein 1>*
-
-*\<Whitebox-Template>*
-
-### Whitebox *\<Baustein 2>*
-
-*\<Whitebox-Template>*
-
-…
-
-### Whitebox *\<Baustein m>*
-
-*\<Whitebox-Template>*
-
-## Ebene 3
-
-### Whitebox \<\_Baustein x.1\_\>
-
-*\<Whitebox-Template>*
-
-### Whitebox \<\_Baustein x.2\_\>
-
-*\<Whitebox-Template>*
-
-### Whitebox \<\_Baustein y.1\_\>
-
-*\<Whitebox-Template>*
+*\<ausstehend>*
 
 # 6. Laufzeitsicht
 
