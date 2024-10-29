@@ -2,7 +2,7 @@
 
 Created and maintained by Dustin Scharf and Vincent Putzke.
 
-# Einführung und Ziele
+# 1. Einführung und Ziele
 
 Die zu entwickelnde App zielt darauf ab, postoperative Komplikationen bei Patienten, insbesondere Sepsis, nach Herzschrittmacher-Operationen frühzeitig zu erkennen, sobald diese die stetige Überwachung des Krankenhauses verlassen haben. Dies geschieht durch den Einsatz von Wearables, die relevante Vitalparameter kontinuierlich messen und zusammen mit Patient Reported Outcomes (PROs) und elektronischen Gesundheitsakten (EHRs) dem medizinischen Personal visualisiert werden.
 
@@ -45,7 +45,7 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 | **Biotronik**                  | Industriepartner              | Einblicke in die prototypische Implementierung von Home Monitoring durch Wearable-Technologie. |
 | **Datenschutzbeauftragter**    | Interne Datenschutzabteilung  | Einhaltung der Datenschutzrichtlinien, insbesondere bei der Nutzung sensibler Gesundheitsdaten. |
 
-# Randbedingungen
+# 2. Randbedingungen
 In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die die Softwarearchitekten bei ihren Design- und Implementierungsentscheidungen sowie im Entwicklungsprozess beachten müssen. Diese Einschränkungen können technischer, organisatorischer oder rechtlicher Natur sein und beeinflussen maßgeblich die Architektur der Anwendung.
 
 ### Technical Constraints
@@ -76,7 +76,7 @@ In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die di
 | **Versionsverwaltung**                       | Die Versionskontrolle erfolgt über Git, und alle Teammitglieder müssen strikte Branching- und Merging-Richtlinien befolgen. |
 | **Dokumentationsanforderungen**              | Eine kontinuierliche und strukturierte Projektdokumentation ist erforderlich. Dazu gehören die wöchentliche Abgabe von Fortschrittsberichten und technische Spezifikationen in Form von Arc42-Dokumenten. |
 
-# Kontextabgrenzung
+# 3. Kontextabgrenzung
 
 Dieser Abschnitt beschreibt den Systemkontext und grenzt das System von seinen Kommunikationspartnern (Nutzern und anderen Systemen) ab. Es wird definiert, welche externen Schnittstellen für den Austausch von Daten relevant sind.
 
@@ -145,9 +145,9 @@ Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierte
 
 **\<Mapping fachliche auf technische Schnittstellen>**
 
-# Lösungsstrategie
+# 4. Lösungsstrategie
 
-# Bausteinsicht
+# 5. Bausteinsicht
 
 ## Whitebox Gesamtsystem
 
@@ -220,7 +220,7 @@ Wichtige Schnittstellen
 
 *\<Whitebox-Template>*
 
-# Laufzeitsicht
+# 6. Laufzeitsicht
 
 ## *\<Bezeichnung Laufzeitszenario 1>*
 
@@ -237,7 +237,7 @@ Wichtige Schnittstellen
 
 …
 
-# Verteilungssicht
+# 7. Verteilungssicht
 
 ## Infrastruktur Ebene 1
 
@@ -268,7 +268,7 @@ Zuordnung von Bausteinen zu Infrastruktur
 
 *\<Diagramm + Erläuterungen>*
 
-# Querschnittliche Konzepte
+# 8. Querschnittliche Konzepte
 
 ## *\<Konzept 1>*
 
@@ -284,9 +284,9 @@ Zuordnung von Bausteinen zu Infrastruktur
 
 *\<Erklärung>*
 
-# Architekturentscheidungen
+# 9. Architekturentscheidungen
 
-# Qualitätsanforderungen
+# 10. Qualitätsanforderungen
 
 <div class="formalpara-title">
 
@@ -328,9 +328,9 @@ graph TD
 | **Interoperabilität**           | Die Anwendung integriert erfolgreich Daten aus Wearables, PROs und EHR-Daten innerhalb von 5 Minuten nach der Dateneingabe. |
 | **Erweiterbarkeit**             | Neue Wearable-Geräte können innerhalb von 2 Arbeitstagen in das System integriert werden. Automatisierte Tests decken mindestens 80% des Codes ab, um die Wartbarkeit zu gewährleisten. |
 
-# Risiken und technische Schulden
+# 11. Risiken und technische Schulden
 
-# Glossar
+# 12. Glossar
 
 | Begriff        | Definition        |
 |----------------|-------------------|
