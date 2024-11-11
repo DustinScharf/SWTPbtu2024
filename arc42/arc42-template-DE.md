@@ -11,12 +11,9 @@ Das primäre Ziel der App ist es, die Überwachung der Patienten auch nach der E
 ## Aufgabenstellung
 Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 - **Kontinuierliche Überwachung von Vitalwerten** (z.B. Temperatur, Herzfrequenz, Atemfrequenz) mittels Wearables.
-- **Eingabe von PROs** durch Patienten über eine mobile App.
-- **Integration der erfassten Daten** (Wearables, PROs, EHR-Daten) zur Erstellung eines umfassenden Gesundheitsprofils.
-- **Warnsystem** zur Benachrichtigung des medizinischen Personals bei Abweichungen von Normwerten.
-- **Visualisierung der Gesundheitsdaten** für das medizinische Personal in übersichtlichen Dashboards.
-
-<!-- LL: Siehe Diskussion am Dienstag zu zusammengehörigen Anforderungen, funktionale Anforderungen und UCs entsprechend anpassen. Hier sollte auch klar werden, woher die EHR-Daten kommen.  -->
+- **Eingabe von PROs** über eine mobile App.
+- **Warnsystem** zur Benachrichtigung des medizinischen Personals.
+- **Visualisierung der Gesundheitsdaten** in Dashboards.
 
 | Use Case | Beschreibung |
 |----------|--------------|
@@ -27,12 +24,13 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 
 ## Qualitätsziele
 
+<!--| **Benutzerfreundlichkeit**      | Sowohl Patienten als auch medizinisches Personal müssen die App einfach und intuitiv bedienen können. |-->
+<!--| **Interoperabilität**           | Die App muss einen Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |-->
+
 | Ziel                           | Beschreibung |
 |---------------------------------|--------------|
 | **Zuverlässigkeit**             | Die App muss Vitaldaten zuverlässig erfassen und zeitnahe Warnungen generieren, um schnelle medizinische Reaktionen zu ermöglichen. |
-| **Benutzerfreundlichkeit**      | Sowohl Patienten als auch medizinisches Personal müssen die App einfach und intuitiv bedienen können. |
 | **Sicherheit und Datenschutz**  | Die App muss höchsten Sicherheitsstandards entsprechen, um sensible Patientendaten zu schützen. |
-| **Interoperabilität**           | Die App muss einen Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
 | **Erweiterbarkeit**             | Das System sollte so entworfen sein, dass es in Zukunft leicht um neue Funktionen oder Geräte erweitert werden kann. |
 
 ## Stakeholder
@@ -147,39 +145,26 @@ Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierte
 
 # 4. Lösungsstrategie
 
-1. Inkrementelle Entwicklung mit MVP-Ansatz
-    Entwicklung in iterativen Zyklen, beginnend mit einem Minimum Viable Product (MVP)
-    Fokus auf die Kernfunktionalitäten: Wearable-Datenerfassung, PRO-Eingabe, Datenintegration und Warnungssystem
-2. User-Centricity und Usability Engineering
-    Frühzeitige und kontinuierliche Einbindung von medizinischem Personal in den Entwicklungsprozess
-    Iteratives Usability-Testing zur Optimierung der Benutzeroberfläche
-    Berücksichtigung von haptischem Feedback (z.B. Drehräder) neben Touchscreen-Bedienung
-3. Model-Driven Software Development (MDSD)
-    Einsatz von Domänenmodellen zur Codegenerierung
-    Nutzung von Domain-Specific Languages (DSLs) für effiziente Entwicklung und Wartung
-4. Modellbasiertes Testen und Qualitätssicherung
-    Implementierung von modellbasiertem Testen zur frühzeitigen Fehlererkennung
-    Einsatz von Model Checking zur Konsistenzprüfung von Systemmodellen
-    Integration von automatisierten Tests in den Entwicklungsprozess
-5. Datenintegration und -verarbeitung
-    Entwicklung einer robusten Architektur zur Integration von Wearable-Daten, PROs und EHR-Daten
-    Implementierung von Algorithmen zur Sepsis-Früherkennung basierend auf integrierten Daten
-6. Sicherheit und Datenschutz
-    Implementierung umfassender Cybersecurity-Maßnahmen für die Vernetzung mit Wearables
-    Einhaltung von Datenschutzrichtlinien (DSGVO) durch Privacy-by-Design-Ansatz
-7. Skalierbare und erweiterbare Architektur
-    Design einer modularen Architektur zur einfachen Erweiterung um zusätzliche Funktionen
-    Vorbereitung auf zukünftige IoMT (Internet of Medical Things) Entwicklungen
-8. Dokumentation und regulatorische Compliance
-    Integration von teilautomatisierter Erzeugung von Anforderungsdokumenten
-    Sicherstellung der Rückverfolgbarkeit zwischen Anforderungen, Design und Tests
-    Einhaltung aller relevanten regulatorischen Anforderungen für Medizinprodukte-Software
-9. Visualisierung und Benutzeroberfläche
-    Entwicklung intuitiver Visualisierungen für die Übersicht und Detailansicht der Patientendaten
-    Klare Unterscheidung zwischen EHR-Daten und Wearable-Daten in der Darstellung
-10. Connectivity und Telemedizin
-    Integration von Telemedizin-Funktionen, inspiriert vom Home Monitoring System
-    Entwicklung von Schnittstellen für eine mögliche zukünftige Fernintervention
+1. Agile Entwicklungsmethodik
+    Schrittweise Umsetzung mit Fokus auf Kernfunktionen
+2. Nutzerorientiertes Design
+    Einbeziehung von Endnutzern und iterative Verbesserung der Bedienbarkeit
+3. Modellgetriebene Softwareentwicklung
+    Einsatz von Domänenmodellen und spezifischen Sprachen für effiziente Entwicklung
+4. Qualitätssicherung durch Modellierung
+    Nutzung von Modellen für Tests und Konsistenzprüfungen
+5. Datenmanagement
+    Integration und Verarbeitung verschiedener Datenquellen
+6. IT-Sicherheit und Datenschutz
+    Implementierung von Schutzmaßnahmen und Einhaltung von Richtlinien
+7. Zukunftssichere Systemarchitektur
+    Modularer Aufbau für Erweiterbarkeit und Skalierbarkeit
+8. Regulatorische Konformität
+    Einhaltung von Vorschriften für Medizinprodukte-Software
+9. Benutzerfreundliche Darstellung
+    Entwicklung intuitiver Visualisierungen für komplexe Daten
+10. Telemedizinische Funktionen
+    Integration von Fernüberwachungs- und -interventionsmöglichkeiten
 
 # 5. Bausteinsicht
 
@@ -187,127 +172,100 @@ Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierte
 
 ```mermaid
 graph TD
-    A[Frühdiagnose-System] --> B[Datenerfassung]
-    A --> C[Datenintegration]
-    A --> D[Analyse und Warnung]
-    A --> E[Benutzeroberfläche]
-    A --> F[Sicherheit und Datenschutz]
+    subgraph Präsentationsschicht
+        A[Benutzeroberfläche]
+    end
+    subgraph Anwendungsschicht
+        B[Analyse und Warnung]
+    end
+    subgraph Datenschicht
+        C[Datenintegration]
+        D[Datenerfassung]
+    end
+    
+    A --> B
+    B --> C
+    C --> D
 ```
-
-Begründung  
-*\<Erläuternder Text>*
 
 Enthaltene Bausteine  
 
-1. Datenerfassung: 
-    - Verantwortlich für die Erfassung von Wearable-Daten und Patient Reported Outcomes (PROs)
-2. Datenintegration:
-    - Integriert Daten aus Wearables, PROs und EHR-Systemen
-3. Analyse und Warnung:
-    - Führt Sepsis-Früherkennung durch und generiert Warnungen
-4. Benutzeroberfläche:
-    - Stellt Daten für medizinisches Personal dar und ermöglicht Interaktion
-5. Sicherheit und Datenschutz:
-    - Gewährleistet Datensicherheit und Einhaltung von Datenschutzrichtlinien
+1. Präsentationsschicht:
+    - Benutzeroberfläche:
+        Stellt Daten für medizinisches Personal dar und ermöglicht Interaktion
+2. Anwendungsschicht:
+    - Analyse und Warnung:
+        Führt Sepsis-Früherkennung durch und generiert Warnungen
+3. Datenschicht:
+    - Datenintegration:
+        Integriert Daten aus Wearables, PROs und EHR-Systemen
+    - Datenerfassung:
+        Verantwortlich für die Erfassung von Wearable-Daten und Patient Reported Outcomes (PROs)
 
-Wichtige Schnittstellen  
-*\<Beschreibung wichtiger Schnittstellen>*
-
-### Datenerfassung
-
-```mermaid
-graph TD
-    B[Datenerfassung] --> B1[Wearable-Schnittstelle]
-    B --> B2[PRO-Eingabemodul]
-    B --> B3[Datenvalidierung]
-```
-1. Wearable-Schnittstelle:
-    - Diese Komponente ermöglicht die Kommunikation zwischen der Anwendung und den Wearable-Geräten. Sie erfasst kontinuierlich relevante Vitalparameter wie Herzfrequenz, Temperatur und andere Sepsis-indikative Werte.
-    - Die Schnittstelle sorgt dafür, dass die Daten in Echtzeit übertragen und verarbeitet werden.
-2. PRO-Eingabemodul:
-    - Dieses Modul erlaubt es den Patienten, ihre eigenen Gesundheitsdaten über die mobile Anwendung einzugeben.
-    - Es umfasst Felder für Patient Reported Outcomes (PROs), wie subjektive Symptome oder Lebensqualität, und ist darauf ausgelegt, eine benutzerfreundliche Eingabe zu ermöglichen.
-3. Datenvalidierung:
-    - Die Datenvalidierung stellt sicher, dass alle erfassten und eingegebenen Daten korrekt und vollständig sind.
-    - Diese Komponente prüft auf Plausibilität und Konsistenz der Daten, um Fehler zu minimieren und die Qualität der Informationen zu gewährleisten.
-
-### Datenintegration
-
-```mermaid
-graph TD
-    C[Datenintegration] --> C1[EHR-Connector]
-    C --> C2[Daten-Harmonisierung]
-    C --> C3[Datenspeicher]
-```
-
-1. EHR-Connector:
-    - Der EHR-Connector integriert elektronische Gesundheitsakten (EHR) der Patienten in das System.
-    - Er ermöglicht den Zugriff auf historische Gesundheitsdaten und sorgt dafür, dass alle relevanten Informationen für die Analyse zur Verfügung stehen.
-2. Daten-Harmonisierung:
-    - Diese Komponente sorgt dafür, dass die Daten aus verschiedenen Quellen (Wearables, PROs, EHR) in ein einheitliches Format überführt werden.
-    - Sie bereinigt und standardisiert die Daten, um eine konsistente Analyse zu ermöglichen.
-3. Datenspeicher:
-    - Der Datenspeicher ist verantwortlich für die sichere Ablage aller erfassten und integrierten Daten.
-    - Er gewährleistet sowohl die Verfügbarkeit als auch die Sicherheit der Informationen und ermöglicht eine effiziente Datenabfrage.
-
-### Analyse und Warnung
-
-```mermaid
-graph TD
-    D[Analyse und Warnung] --> D1[Sepsis-Erkennungsalgorithmus]
-    D --> D2[Warnungsgenerator]
-    D --> D3[Trendanalyse]
-```
-
-1. Sepsis-Erkennungsalgorithmus:
-    - Dieser Algorithmus analysiert die gesammelten Vitalparameter und Patientendaten in Echtzeit, um Anzeichen einer Sepsis frühzeitig zu erkennen.
-    - Er nutzt definierte Schwellenwerte und Mustererkennung zur Identifikation von Risikopatienten.
-2. Warnungsgenerator:
-    - Der Warnungsgenerator erstellt Benachrichtigungen für das medizinische Personal, wenn kritische Werte überschritten werden oder Anomalien festgestellt werden.
-    - Diese Funktion ist entscheidend für eine schnelle Reaktion auf potenzielle Komplikationen.
-3. Trendanalyse:
-    - Diese Komponente analysiert den zeitlichen Verlauf der Gesundheitsdaten eines Patienten, um Veränderungen im Gesundheitszustand zu identifizieren.
-    - Sie unterstützt das medizinische Personal dabei, Muster zu erkennen und fundierte Entscheidungen zu treffen.
+## Ebene 2
 
 ### Benutzeroberfläche
 
 ```mermaid
 graph TD
-    E[Benutzeroberfläche] --> E1[Patientenübersicht]
-    E --> E2[Detailansicht]
-    E --> E3[Warnungsmanagement]
+    A[Benutzeroberfläche] --> B[Visualisierung]
+    A --> C[Interaktion]
+    B --> D[Dashboards]
+    B --> E[Diagramme]
+    C --> F[Eingabemasken]
+    C --> G[Alarmmeldungen]
 ```
+Die Benutzeroberfläche ist verantwortlich für die Darstellung der Daten und die Interaktion mit dem medizinischen Personal. Sie umfasst:
+- Visualisierung: Erstellt Dashboards und Diagramme zur übersichtlichen Darstellung der Patientendaten.
+- Interaktion: Bietet Eingabemasken für manuelle Dateneingabe und zeigt Alarmmeldungen bei kritischen Zuständen an.
 
-1. Patientenübersicht:
-    - Die Patientenübersicht bietet dem medizinischen Personal einen schnellen Überblick über alle überwachten Patienten sowie deren aktuelle Vitalparameter und Statusanzeigen.
-    - Sie ist so gestaltet, dass sie wichtige Informationen auf einen Blick darstellt.
-2. Detailansicht:
-    - In der Detailansicht können medizinische Fachkräfte tiefere Einblicke in die Gesundheitsdaten einzelner Patienten erhalten.
-    - Hier werden historische Daten, Trends sowie spezifische Warnungen angezeigt, um eine umfassende Analyse zu ermöglichen.
-3. Warnungsmanagement:
-    - Diese Funktion ermöglicht es dem medizinischen Personal, Warnungen zu verwalten und darauf zu reagieren.
-    - Sie bietet Optionen zur Dokumentation von Maßnahmen und zur Nachverfolgung von Alarmen über Zeiträume hinweg.
-
-### Sicherheit und Datenschutz
+### Analyse und Warnung
 
 ```mermaid
 graph TD
-    F[Sicherheit und Datenschutz] --> F1[Verschlüsselung]
-    F --> F2[Zugriffsmanagement]
-    F --> F3[Audit-Logging]
+    A[Analyse und Warnung] --> B[Sepsis-Früherkennung]
+    A --> C[Warnungsgenerierung]
+    B --> D[Mustererkennungsalgorithmen]
+    B --> E[Maschinelles Lernen]
+    C --> F[Schwellenwertüberwachung]
+    C --> G[Eskalationsmanagement]
 ```
 
-1. Verschlüsselung:
-    - Die Verschlüsselung schützt alle sensiblen Daten während der Übertragung und Speicherung vor unbefugtem Zugriff.
-    - Dies ist entscheidend für den Schutz der Privatsphäre der Patienten gemäß den geltenden Datenschutzbestimmungen.
-2. Zugriffsmanagement:
-    - Das Zugriffsmanagement regelt, welche Benutzergruppen auf welche Funktionen und Daten zugreifen können.
-    - Es stellt sicher, dass nur autorisierte Personen Zugang zu sensiblen Informationen haben.
-3. Audit-Logging:
-    - Das Audit-Logging verfolgt alle Zugriffe auf das System sowie Änderungen an Daten oder Einstellungen.
-    - Diese Funktion dient der Nachvollziehbarkeit und hilft bei der Identifizierung von Sicherheitsvorfällen oder Missbrauch.
+Die Analyse- und Warnungskomponente führt die Sepsis-Früherkennung durch und generiert Warnungen. Sie beinhaltet:
+- Sepsis-Früherkennung: Nutzt Mustererkennungsalgorithmen und maschinelles Lernen zur Identifikation von Sepsis-Anzeichen.
+- Warnungsgenerierung: Überwacht Schwellenwerte und verwaltet das Eskalationsmanagement für kritische Zustände.
 
-## Ebene 2
+### Datennitegration
+
+```mermaid
+graph TD
+    A[Datenintegration] --> B[Datennormalisierung]
+    A --> C[Datenverknüpfung]
+    B --> D[Formatvereinheitlichung]
+    B --> E[Qualitätssicherung]
+    C --> F[Datenmapping]
+    C --> G[Konsistenzprüfung]
+```
+
+Die Datenintegrationskomponente ist für die Zusammenführung von Daten aus verschiedenen Quellen verantwortlich:
+- Datennormalisierung: Vereinheitlicht Datenformate und führt Qualitätssicherungsmaßnahmen durch.
+- Datenverknüpfung: Erstellt Mappings zwischen verschiedenen Datenquellen und prüft die Konsistenz der integrierten Daten.
+
+### Datenerfassung
+
+```mermaid
+graph TD
+    A[Datenerfassung] --> B[Wearable-Datenerfassung]
+    A --> C[PRO-Erfassung]
+    B --> D[Sensordatenverarbeitung]
+    B --> E[Datenübertragung]
+    C --> F[Fragebogenmanagement]
+    C --> G[Dateneingabevalidierung]
+```
+
+Die Datenerfassungskomponente sammelt Daten von Wearables und Patient Reported Outcomes (PROs):
+- Wearable-Datenerfassung: Verarbeitet Sensordaten und überträgt sie sicher an das System.
+- PRO-Erfassung: Verwaltet digitale Fragebögen und validiert die eingegebenen Daten.
 
 *\<ausstehend>*
 
@@ -332,16 +290,64 @@ graph TD
 
 ## Infrastruktur Ebene 1
 
-***\<Übersichtsdiagramm>***
+```mermaid
+graph TD
+    subgraph Krankenhaus
+        A[Klinische Arbeitsplätze]
+        B[Lokaler Server]
+    end
+    subgraph Cloud
+        C[Datenverarbeitungsserver]
+        D[Datenbanken]
+    end
+    subgraph Patienten
+        E[Wearables]
+        F[Mobile Geräte]
+    end
+    
+    A <--> B
+    B <--> C
+    C <--> D
+    E --> C
+    F --> C
+```
 
-Begründung  
-*\<Erläuternder Text>*
+### Konzept
+Das Frühdiagnose-System ist auf mehrere Knoten verteilt, um Skalierbarkeit, Leistung und Datensicherheit zu gewährleisten:
+- Klinische Arbeitsplätze:
+  Ausführung der Benutzeroberfläche
+    Zugriff über Webbrowser oder dedizierte Anwendung
+- Lokaler Krankenhausserver:
+    Zwischenspeicherung von Daten für schnellen Zugriff
+    Ausführung lokaler Analysen
+    Sicherstellung der Systemverfügbarkeit bei Netzwerkproblemen
+- Cloud-Datenverarbeitungsserver:
+    Ausführung der Hauptanalyse- und Warnungskomponenten
+    Verarbeitung von Daten aus verschiedenen Quellen
+    Skalierbare Ressourcen für Spitzenlasten
+- Cloud-Datenbanken:
+    Zentrale Speicherung aller Patientendaten
+    Getrennte Datenbanken für verschiedene Datentypen (z.B. Wearable-Daten, PROs, EHR)
+- Wearables:
+    Erfassung von Vitalparametern
+    Lokale Vorverarbeitung der Daten
+- Mobile Geräte der Patienten:
+    Erfassung von PROs über mobile Apps
+    Mögliche Anzeige von personalisierten Gesundheitsinformationen
 
-Qualitäts- und/oder Leistungsmerkmale  
-*\<Erläuternder Text>*
+### Bausteine in Infrastruktur
 
-Zuordnung von Bausteinen zu Infrastruktur  
-*\<Beschreibung der Zuordnung>*
+- **Benutzeroberfläche**: Klinische Arbeitsplätze, Mobile Geräte
+- **Analyse und Warnung**: Cloud-Datenverarbeitungsserver, teilweise auf lokalem Krankenhausserver
+- **Datenintegration**: Cloud-Datenverarbeitungsserver
+- **Datenerfassung**: Wearables, Mobile Geräte, teilweise auf Cloud-Datenverarbeitungsserver
+
+### Technologien
+
+- **Netzwerk**: Gesichertes Krankenhaus-LAN, verschlüsselte Internetverbindungen
+- **Datenbanken**: Fire-Datenbank
+- **Wearables**: Android-Smartwatches
+- **Mobile Apps**: auf Android-Geräten
 
 ## Infrastruktur Ebene 2
 
