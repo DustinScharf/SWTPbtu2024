@@ -11,12 +11,9 @@ Das primäre Ziel der App ist es, die Überwachung der Patienten auch nach der E
 ## Aufgabenstellung
 Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 - **Kontinuierliche Überwachung von Vitalwerten** (z.B. Temperatur, Herzfrequenz, Atemfrequenz) mittels Wearables.
-- **Eingabe von PROs** durch Patienten über eine mobile App.
-- **Integration der erfassten Daten** (Wearables, PROs, EHR-Daten) zur Erstellung eines umfassenden Gesundheitsprofils.
-- **Warnsystem** zur Benachrichtigung des medizinischen Personals bei Abweichungen von Normwerten.
-- **Visualisierung der Gesundheitsdaten** für das medizinische Personal in übersichtlichen Dashboards.
-
-<!-- LL: Siehe Diskussion am Dienstag zu zusammengehörigen Anforderungen, funktionale Anforderungen und UCs entsprechend anpassen. Hier sollte auch klar werden, woher die EHR-Daten kommen.  -->
+- **Eingabe von PROs** über eine mobile App.
+- **Warnsystem** zur Benachrichtigung des medizinischen Personals.
+- **Visualisierung der Gesundheitsdaten** in Dashboards.
 
 | Use Case | Beschreibung |
 |----------|--------------|
@@ -27,12 +24,13 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 
 ## Qualitätsziele
 
+<!--| **Benutzerfreundlichkeit**      | Sowohl Patienten als auch medizinisches Personal müssen die App einfach und intuitiv bedienen können. |-->
+<!--| **Interoperabilität**           | Die App muss einen Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |-->
+
 | Ziel                           | Beschreibung |
 |---------------------------------|--------------|
 | **Zuverlässigkeit**             | Die App muss Vitaldaten zuverlässig erfassen und zeitnahe Warnungen generieren, um schnelle medizinische Reaktionen zu ermöglichen. |
-| **Benutzerfreundlichkeit**      | Sowohl Patienten als auch medizinisches Personal müssen die App einfach und intuitiv bedienen können. |
 | **Sicherheit und Datenschutz**  | Die App muss höchsten Sicherheitsstandards entsprechen, um sensible Patientendaten zu schützen. |
-| **Interoperabilität**           | Die App muss einen Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
 | **Erweiterbarkeit**             | Das System sollte so entworfen sein, dass es in Zukunft leicht um neue Funktionen oder Geräte erweitert werden kann. |
 
 ## Stakeholder
@@ -147,78 +145,129 @@ Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierte
 
 # 4. Lösungsstrategie
 
+1. Agile Entwicklungsmethodik
+    Schrittweise Umsetzung mit Fokus auf Kernfunktionen
+2. Nutzerorientiertes Design
+    Einbeziehung von Endnutzern und iterative Verbesserung der Bedienbarkeit
+3. Modellgetriebene Softwareentwicklung
+    Einsatz von Domänenmodellen und spezifischen Sprachen für effiziente Entwicklung
+4. Qualitätssicherung durch Modellierung
+    Nutzung von Modellen für Tests und Konsistenzprüfungen
+5. Datenmanagement
+    Integration und Verarbeitung verschiedener Datenquellen
+6. IT-Sicherheit und Datenschutz
+    Implementierung von Schutzmaßnahmen und Einhaltung von Richtlinien
+7. Zukunftssichere Systemarchitektur
+    Modularer Aufbau für Erweiterbarkeit und Skalierbarkeit
+8. Regulatorische Konformität
+    Einhaltung von Vorschriften für Medizinprodukte-Software
+9. Benutzerfreundliche Darstellung
+    Entwicklung intuitiver Visualisierungen für komplexe Daten
+10. Telemedizinische Funktionen
+    Integration von Fernüberwachungs- und -interventionsmöglichkeiten
+
 # 5. Bausteinsicht
 
 ## Whitebox Gesamtsystem
 
-***\<Übersichtsdiagramm>***
-
-Begründung  
-*\<Erläuternder Text>*
+```mermaid
+graph TD
+    subgraph Präsentationsschicht
+        A[Benutzeroberfläche]
+    end
+    subgraph Anwendungsschicht
+        B[Analyse und Warnung]
+    end
+    subgraph Datenschicht
+        C[Datenintegration]
+        D[Datenerfassung]
+    end
+    
+    A --> B
+    B --> C
+    C --> D
+```
 
 Enthaltene Bausteine  
-*\<Beschreibung der enthaltenen Bausteine (Blackboxen)>*
 
-Wichtige Schnittstellen  
-*\<Beschreibung wichtiger Schnittstellen>*
-
-### \<Name Blackbox 1>
-
-*\<Zweck/Verantwortung>*
-
-*\<Schnittstelle(n)>*
-
-*\<(Optional) Qualitäts-/Leistungsmerkmale>*
-
-*\<(Optional) Ablageort/Datei(en)>*
-
-*\<(Optional) Erfüllte Anforderungen>*
-
-*\<(optional) Offene Punkte/Probleme/Risiken>*
-
-### \<Name Blackbox 2>
-
-*\<Blackbox-Template>*
-
-### \<Name Blackbox n>
-
-*\<Blackbox-Template>*
-
-### \<Name Schnittstelle 1>
-
-…
-
-### \<Name Schnittstelle m>
+1. Präsentationsschicht:
+    - Benutzeroberfläche:
+        Stellt Daten für medizinisches Personal dar und ermöglicht Interaktion
+2. Anwendungsschicht:
+    - Analyse und Warnung:
+        Führt Sepsis-Früherkennung durch und generiert Warnungen
+3. Datenschicht:
+    - Datenintegration:
+        Integriert Daten aus Wearables, PROs und EHR-Systemen
+    - Datenerfassung:
+        Verantwortlich für die Erfassung von Wearable-Daten und Patient Reported Outcomes (PROs)
 
 ## Ebene 2
 
-### Whitebox *\<Baustein 1>*
+### Benutzeroberfläche
 
-*\<Whitebox-Template>*
+```mermaid
+graph TD
+    A[Benutzeroberfläche] --> B[Visualisierung]
+    A --> C[Interaktion]
+    B --> D[Dashboards]
+    B --> E[Diagramme]
+    C --> F[Eingabemasken]
+    C --> G[Alarmmeldungen]
+```
+Die Benutzeroberfläche ist verantwortlich für die Darstellung der Daten und die Interaktion mit dem medizinischen Personal. Sie umfasst:
+- Visualisierung: Erstellt Dashboards und Diagramme zur übersichtlichen Darstellung der Patientendaten.
+- Interaktion: Bietet Eingabemasken für manuelle Dateneingabe und zeigt Alarmmeldungen bei kritischen Zuständen an.
 
-### Whitebox *\<Baustein 2>*
+### Analyse und Warnung
 
-*\<Whitebox-Template>*
+```mermaid
+graph TD
+    A[Analyse und Warnung] --> B[Sepsis-Früherkennung]
+    A --> C[Warnungsgenerierung]
+    B --> D[Mustererkennungsalgorithmen]
+    B --> E[Maschinelles Lernen]
+    C --> F[Schwellenwertüberwachung]
+    C --> G[Eskalationsmanagement]
+```
 
-…
+Die Analyse- und Warnungskomponente führt die Sepsis-Früherkennung durch und generiert Warnungen. Sie beinhaltet:
+- Sepsis-Früherkennung: Nutzt Mustererkennungsalgorithmen und maschinelles Lernen zur Identifikation von Sepsis-Anzeichen.
+- Warnungsgenerierung: Überwacht Schwellenwerte und verwaltet das Eskalationsmanagement für kritische Zustände.
 
-### Whitebox *\<Baustein m>*
+### Datennitegration
 
-*\<Whitebox-Template>*
+```mermaid
+graph TD
+    A[Datenintegration] --> B[Datennormalisierung]
+    A --> C[Datenverknüpfung]
+    B --> D[Formatvereinheitlichung]
+    B --> E[Qualitätssicherung]
+    C --> F[Datenmapping]
+    C --> G[Konsistenzprüfung]
+```
 
-## Ebene 3
+Die Datenintegrationskomponente ist für die Zusammenführung von Daten aus verschiedenen Quellen verantwortlich:
+- Datennormalisierung: Vereinheitlicht Datenformate und führt Qualitätssicherungsmaßnahmen durch.
+- Datenverknüpfung: Erstellt Mappings zwischen verschiedenen Datenquellen und prüft die Konsistenz der integrierten Daten.
 
-### Whitebox \<\_Baustein x.1\_\>
+### Datenerfassung
 
-*\<Whitebox-Template>*
+```mermaid
+graph TD
+    A[Datenerfassung] --> B[Wearable-Datenerfassung]
+    A --> C[PRO-Erfassung]
+    B --> D[Sensordatenverarbeitung]
+    B --> E[Datenübertragung]
+    C --> F[Fragebogenmanagement]
+    C --> G[Dateneingabevalidierung]
+```
 
-### Whitebox \<\_Baustein x.2\_\>
+Die Datenerfassungskomponente sammelt Daten von Wearables und Patient Reported Outcomes (PROs):
+- Wearable-Datenerfassung: Verarbeitet Sensordaten und überträgt sie sicher an das System.
+- PRO-Erfassung: Verwaltet digitale Fragebögen und validiert die eingegebenen Daten.
 
-*\<Whitebox-Template>*
-
-### Whitebox \<\_Baustein y.1\_\>
-
-*\<Whitebox-Template>*
+*\<ausstehend>*
 
 # 6. Laufzeitsicht
 
@@ -241,16 +290,64 @@ Wichtige Schnittstellen
 
 ## Infrastruktur Ebene 1
 
-***\<Übersichtsdiagramm>***
+```mermaid
+graph TD
+    subgraph Krankenhaus
+        A[Klinische Arbeitsplätze]
+        B[Lokaler Server]
+    end
+    subgraph Cloud
+        C[Datenverarbeitungsserver]
+        D[Datenbanken]
+    end
+    subgraph Patienten
+        E[Wearables]
+        F[Mobile Geräte]
+    end
+    
+    A <--> B
+    B <--> C
+    C <--> D
+    E --> C
+    F --> C
+```
 
-Begründung  
-*\<Erläuternder Text>*
+### Konzept
+Das Frühdiagnose-System ist auf mehrere Knoten verteilt, um Skalierbarkeit, Leistung und Datensicherheit zu gewährleisten:
+- Klinische Arbeitsplätze:
+  Ausführung der Benutzeroberfläche
+    Zugriff über Webbrowser oder dedizierte Anwendung
+- Lokaler Krankenhausserver:
+    Zwischenspeicherung von Daten für schnellen Zugriff
+    Ausführung lokaler Analysen
+    Sicherstellung der Systemverfügbarkeit bei Netzwerkproblemen
+- Cloud-Datenverarbeitungsserver:
+    Ausführung der Hauptanalyse- und Warnungskomponenten
+    Verarbeitung von Daten aus verschiedenen Quellen
+    Skalierbare Ressourcen für Spitzenlasten
+- Cloud-Datenbanken:
+    Zentrale Speicherung aller Patientendaten
+    Getrennte Datenbanken für verschiedene Datentypen (z.B. Wearable-Daten, PROs, EHR)
+- Wearables:
+    Erfassung von Vitalparametern
+    Lokale Vorverarbeitung der Daten
+- Mobile Geräte der Patienten:
+    Erfassung von PROs über mobile Apps
+    Mögliche Anzeige von personalisierten Gesundheitsinformationen
 
-Qualitäts- und/oder Leistungsmerkmale  
-*\<Erläuternder Text>*
+### Bausteine in Infrastruktur
 
-Zuordnung von Bausteinen zu Infrastruktur  
-*\<Beschreibung der Zuordnung>*
+- **Benutzeroberfläche**: Klinische Arbeitsplätze, Mobile Geräte
+- **Analyse und Warnung**: Cloud-Datenverarbeitungsserver, teilweise auf lokalem Krankenhausserver
+- **Datenintegration**: Cloud-Datenverarbeitungsserver
+- **Datenerfassung**: Wearables, Mobile Geräte, teilweise auf Cloud-Datenverarbeitungsserver
+
+### Technologien
+
+- **Netzwerk**: Gesichertes Krankenhaus-LAN, verschlüsselte Internetverbindungen
+- **Datenbanken**: Fire-Datenbank
+- **Wearables**: Android-Smartwatches
+- **Mobile Apps**: auf Android-Geräten
 
 ## Infrastruktur Ebene 2
 
