@@ -17,21 +17,17 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 
 | Use Case | Beschreibung |
 |----------|--------------|
-| UC-01    | Überwachung von Vitalwerten mittels Wearables und Visualisierung im Dashboard. |
-| UC-02    | Eingabe von PROs durch Patienten in die App. |
-| UC-03    | Integration der Daten aus Wearables, PROs und EHRs. |
-| UC-04    | Warnung bei Abweichungen von normalen Werten. |
+| UC-01    | Erfassung von Daten über die Patienten |
+| UC-02    | Visualisierung der Daten |
+| UC-03    | Integration der Daten |
 
 ## Qualitätsziele
 
-<!--| **Benutzerfreundlichkeit**      | Sowohl Patienten als auch medizinisches Personal müssen die App einfach und intuitiv bedienen können. |-->
-<!--| **Interoperabilität**           | Die App muss einen Standard verwenden, um die Kompatibilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |-->
-
 | Ziel                           | Beschreibung |
 |---------------------------------|--------------|
-| **Zuverlässigkeit**             | Die App muss Vitaldaten zuverlässig erfassen und zeitnahe Warnungen generieren, um schnelle medizinische Reaktionen zu ermöglichen. |
+| **Zuverlässigkeit**             | Die App muss Vitaldaten zuverlässig erfassen und entsprechend des aktuellen Status reagieren. |
 | **Sicherheit und Datenschutz**  | Die App muss höchsten Sicherheitsstandards entsprechen, um sensible Patientendaten zu schützen. |
-| **Erweiterbarkeit**             | Das System sollte so entworfen sein, dass es in Zukunft leicht um neue Funktionen oder Geräte erweitert werden kann. |
+| **Benutzerfreundlichkeit**      | Das System muss über eine intuitive Bedienung sowie effektive Oberfläche verfügen. |
 
 ## Stakeholder
 
@@ -46,17 +42,18 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 # 2. Randbedingungen
 In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die die Softwarearchitekten bei ihren Design- und Implementierungsentscheidungen sowie im Entwicklungsprozess beachten müssen. Diese Einschränkungen können technischer, organisatorischer oder rechtlicher Natur sein und beeinflussen maßgeblich die Architektur der Anwendung.
 
-### Technical Constraints
+### Technische Bedinungen
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
 | **Einhaltung des FHIR-Standards**            | Die Anwendung muss den FHIR (Fast Healthcare Interoperability Resources)-Standard für den Austausch von Gesundheitsdaten erfüllen, um die Interoperabilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
 | **Wearable-Integration**                     | Die Anwendung muss mit den vom Lehrstuhl bereitgestellten Samsung Galaxy Watch 6 Wearables und Samsung Galaxy A15 Smartphones kompatibel sein. |
 | **Mobile Plattform**                         | Die Anwendung muss auf Android-Geräten (Android 14) lauffähig sein und den Android Health Services und Wear OS-APIs folgen. |
+| **Web-Integration**                          | Die Anwendung muss als Website verfügbar sein und den gängigen Web-Anforderungen genügen.
 | **Sicherheitsrichtlinien**                   | Es müssen strenge Sicherheitsstandards, wie z.B. Verschlüsselung von Gesundheitsdaten, Passwortschutz und Zugriffskontrollen, eingehalten werden. |
 | **Sepsisrichtlinien**                        | Die Anwendung soll den aktuellen medizinischen Sepsisrichtlinien entsprechen, um eine präzise und evidenzbasierte Überwachung zu ermöglichen. |
 
-### Organizational and Political Constraints
+### Organisatorische and Politische Bedingungen
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
@@ -64,15 +61,15 @@ In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die di
 | **Zusammenarbeit mit Biotronik**             | Die Anforderungen und Richtlinien des Partners Biotronik müssen berücksichtigt werden, da dieser die Anforderungen an die Wearables und das Monitoring beeinflusst. |
 | **Einhaltung der BTU-Richtlinien**           | Die App-Entwicklung muss den universitätsinternen Vorgaben und Prüfungsrichtlinien für studentische Projekte entsprechen, z.B. in Bezug auf Dokumentation und Code-Qualität. |
 
-### Conventions
+### Konventionen
 
 <!-- LL: techn. Spezifikationen werden nur von den Architects erstellt, nicht von den SWP Studierenden. Bitte bei den Stakeholdern einen Unterschied machen zwischen Studierenden im Softwarepraktikum und die unterschiedliche Arten von Coaches (Agile bzw. Architects & Quality Coaches) -->
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
-| **Programmierrichtlinien**                   | Es gelten die allgemeinen Programmierstandards für Java/Kotlin auf Android, insbesondere saubere Code-Architektur und die Verwendung von Design-Patterns wie MVVM (Model-View-ViewModel). |
+| **Programmierrichtlinien**                   | Es gelten die allgemeinen Programmierstandards für Java/Kotlin _(s.t.c)_ auf Android, insbesondere saubere Code-Architektur. |
 | **Versionsverwaltung**                       | Die Versionskontrolle erfolgt über Git, und alle Teammitglieder müssen strikte Branching- und Merging-Richtlinien befolgen. |
-| **Dokumentationsanforderungen**              | Eine kontinuierliche und strukturierte Projektdokumentation ist erforderlich. Dazu gehören die wöchentliche Abgabe von Fortschrittsberichten und technische Spezifikationen in Form von Arc42-Dokumenten. |
+| **Dokumentationsanforderungen**              | Eine kontinuierliche und strukturierte Projektdokumentation ist erforderlich. |
 
 # 3. Kontextabgrenzung
 
@@ -136,12 +133,6 @@ flowchart TD
 | **Wearables (Samsung Galaxy Watch 6)**| Bluetooth-Verbindung zu Smartphones     | Bluetooth LE, Wear OS API                  |
 
 Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierten Umgebung bereitgestellt, um eine testweise Integration zu simulieren.
-
-**\<Diagramm oder Tabelle>**
-
-**\<optional: Erläuterung der externen technischen Schnittstellen>**
-
-**\<Mapping fachliche auf technische Schnittstellen>**
 
 # 4. Lösungsstrategie
 
