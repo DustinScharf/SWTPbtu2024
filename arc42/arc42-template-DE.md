@@ -33,7 +33,7 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 
 | Rolle/Name                    | Kontakt                      | Erwartungen |
 |-------------------------------|------------------------------|-------------|
-| **Medizinisches Personal**     | Krankenhaus, z.B. Dr. Meier   | Zuverlässige und rechtzeitige Warnungen bei Komplikationen, klare Visualisierungen der Gesundheitsdaten. |
+| **Medizinisches Personal**     | Krankenhaus                   | Zuverlässige und rechtzeitige Warnungen bei Komplikationen, klare Visualisierungen der Gesundheitsdaten. |
 | **Patienten**                  | Herzschrittmacher-Patienten   | Einfache Bedienbarkeit der App zur Eingabe von PROs, Vertrauen in die Datensicherheit. |
 | **Entwicklungsteam**           | Softwareentwickler der BTU    | Klare Spezifikationen und Anforderungen zur Umsetzung der App. |
 | **Biotronik**                  | Industriepartner              | Einblicke in die prototypische Implementierung von Home Monitoring durch Wearable-Technologie. |
