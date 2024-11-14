@@ -35,31 +35,30 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 |-------------------------------|------------------------------|-------------|
 | **Medizinisches Personal**     | Krankenhaus                   | Zuverlässige und rechtzeitige Warnungen bei Komplikationen, klare Visualisierungen der Gesundheitsdaten. |
 | **Patienten**                  | Herzschrittmacher-Patienten   | Einfache Bedienbarkeit der App zur Eingabe von PROs, Vertrauen in die Datensicherheit. |
-| **Entwicklungsteam**           | Softwareentwickler der BTU    | Klare Spezifikationen und Anforderungen zur Umsetzung der App. |
+| **Entwicklungsteam**           | Softwareentwickler der BTU    | Erlernen der wichtigsten Techniken des Software Engineerings, durch Erstellung und Verfeinerung der Spezifikationen und Anforderungen.  |
 | **Biotronik**                  | Industriepartner              | Einblicke in die prototypische Implementierung von Home Monitoring durch Wearable-Technologie. |
 | **Datenschutzbeauftragter**    | Interne Datenschutzabteilung  | Einhaltung der Datenschutzrichtlinien, insbesondere bei der Nutzung sensibler Gesundheitsdaten. |
 
 # 2. Randbedingungen
 In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die die Softwarearchitekten bei ihren Design- und Implementierungsentscheidungen sowie im Entwicklungsprozess beachten müssen. Diese Einschränkungen können technischer, organisatorischer oder rechtlicher Natur sein und beeinflussen maßgeblich die Architektur der Anwendung.
 
-### Technische Bedinungen
+### Technische Bedingungen
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
 | **Einhaltung des FHIR-Standards**            | Die Anwendung muss den FHIR (Fast Healthcare Interoperability Resources)-Standard für den Austausch von Gesundheitsdaten erfüllen, um die Interoperabilität mit Krankenhaus-EHR-Systemen zu gewährleisten. |
 | **Wearable-Integration**                     | Die Anwendung muss mit den vom Lehrstuhl bereitgestellten Samsung Galaxy Watch 6 Wearables und Samsung Galaxy A15 Smartphones kompatibel sein. |
 | **Mobile Plattform**                         | Die Anwendung muss auf Android-Geräten (Android 14) lauffähig sein und den Android Health Services und Wear OS-APIs folgen. |
-| **Web-Integration**                          | Die Anwendung muss als Website verfügbar sein und den gängigen Web-Anforderungen genügen.
-| **Sicherheitsrichtlinien**                   | Es müssen strenge Sicherheitsstandards, wie z.B. Verschlüsselung von Gesundheitsdaten, Passwortschutz und Zugriffskontrollen, eingehalten werden. |
-| **Sepsisrichtlinien**                        | Die Anwendung soll den aktuellen medizinischen Sepsisrichtlinien entsprechen, um eine präzise und evidenzbasierte Überwachung zu ermöglichen. |
+| **Web-Integration**                          | Die Anwendung muss als Website verfügbar sein und den gängigen Web-Anforderungen genügen. |
 
-### Organisatorische and Politische Bedingungen
+### Organisatorische und Politische Bedingungen
 
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
 | **Datenschutzrichtlinien**                   | Die App muss die EU-Datenschutz-Grundverordnung (DSGVO) einhalten, insbesondere in Bezug auf die Verarbeitung und Speicherung sensibler Gesundheitsdaten. |
-| **Zusammenarbeit mit Biotronik**             | Die Anforderungen und Richtlinien des Partners Biotronik müssen berücksichtigt werden, da dieser die Anforderungen an die Wearables und das Monitoring beeinflusst. |
-| **Einhaltung der BTU-Richtlinien**           | Die App-Entwicklung muss den universitätsinternen Vorgaben und Prüfungsrichtlinien für studentische Projekte entsprechen, z.B. in Bezug auf Dokumentation und Code-Qualität. |
+| **Zusammenarbeit mit Biotronik**             | Orientierung an den zu vorhandenen Systemen gegebenen Einblicken. |
+| **Gruppenstruktur** | Das Team arbeitet zu 5./6. unterstützt von einem agilen Coach. Es wird durch einen Architekten begleitet. |
+| **Einhaltung der Abgabevorgaben**           | Die Abgabe erfolgt meilensteinbasiert bis hin zu einer finalen Abgabe am XX.XX.XXXX. Artefaktabgaben sind über Merge-Requests anzufragen. |
 
 ### Konventionen
 
@@ -68,8 +67,9 @@ In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die di
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
 | **Programmierrichtlinien**                   | Es gelten die allgemeinen Programmierstandards für Java/Kotlin _(s.t.c)_ auf Android, insbesondere saubere Code-Architektur. |
-| **Versionsverwaltung**                       | Die Versionskontrolle erfolgt über Git, und alle Teammitglieder müssen strikte Branching- und Merging-Richtlinien befolgen. |
-| **Dokumentationsanforderungen**              | Eine kontinuierliche und strukturierte Projektdokumentation ist erforderlich. |
+| **Versionsverwaltung**                       | Die Versionskontrolle erfolgt über von SST gehostetem GitLab. |
+| **Projektdokumentation**                     | Die Projektdokumentation enthält eine Arbeitsplanung und -aufteilung, sowie den Arbeitsfortschritt und dessen Reflektion.|
+| **Produktdokumentation**                     | Die Produktdokumentation enthält eine Anforderungsspezifikation und Systemtestbeschreibungen. Außerdem Architekturbeschreibungen und Integrationstest. Die Testdurchführung wird dokumentiert und eine Installations- und Bedienungsanleitung erstellt. |
 
 # 3. Kontextabgrenzung
 
@@ -90,11 +90,9 @@ Die post-operative Überwachungs-App kommuniziert mit folgenden Partnern:
         E[Wearable-Geräte]
 
         B -->|PROs| A
-        A -->|Warnungen & Rückmeldungen| B
         C -->|Abfragen| A
         A -->|Visualisierte Daten & Benachrichtigungen| C
         D -->|EHR-Daten| A
-        A -->|Aktualisierte Vitaldaten| D
         E -->|Vitaldaten| A
 ```
 
@@ -114,8 +112,8 @@ Das System nutzt verschiedene technische Schnittstellen, um die relevanten Daten
 ```mermaid
 flowchart TD
     A[Post-operative Überwachungs-App]
-    B[Patienten]
-    C[Medizinisches Personal]
+    B[Smartphone Android-Anwendung]
+    C[Web-Anwendung]
     D[EHR-System des Krankenhauses]
     E[Wearables]
 
@@ -154,9 +152,16 @@ Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierte
 
 | Begriff        | Definition        |
 |----------------|-------------------|
-| EHR            | Electronic Health Record (Elektronische Patientenakte) |
-| PRO            | Patient Reported Outcome |
+| EHR            | Electronic Health Record, eine elektronische Patientenakte im Krankenhaus. Sie enthält jegliche Gesundheitsinformationen zum Patienten wie Vorerkrankungen, Behandlungen und verschriebene Medikamente.  |
+| Vorerkrankung | Eine, unabhängig von der zu überwachenden Behandlung bekannte Erkrankung des Patienten. |
+| PRO            | Patient Reported Outcome, eine manuelle Eingabe/Abfrage der Gesundheit des Patienten. |
 | Sepsis         | Lebensbedrohliche Komplikation einer Infektion, die zu Organversagen führen kann |
+| SIRS & qSOFA   | Sepsis-Richtlinien nach https://www.msdmanuals.com/professional/critical-care-medicine/sepsis-and-septic-shock/sepsis-and-septic-shock| 
+| Temperatur     | Die Körpertemperatur des Patienten. |
+| Puls           | Anzahl an Herzschlägen pro Minute. |
+| Atemrate       | Anzahl an Atemzügen pro Minute. |
+| Weiße Blutzellen | Zellart im Blut des Patienten, dessen Anzahl Indikator für eine bevorstehende/akute Sepsis sein kann. |
+| Vitaldaten | Gesamtheit der Werte aus Puls, Atemrate, Anzahl weißer Blutzellen und Temperatur. |
 | Wearable       | Am Körper getragenes elektronisches Gerät zur Messung von Gesundheitsdaten |
 | DSGVO          | Datenschutz-Grundverordnung |
 | Frühdiagnose   | Erkennung einer Krankheit in einem frühen Stadium |
