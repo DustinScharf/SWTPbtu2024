@@ -1,27 +1,26 @@
-# Über das Projekt: Postoperative Überwachungs-App
+# Über das Projekt: Postoperative Überwachungs-App ⊹₊⟡⋆
 
 Created and maintained by Dustin Scharf and Vincent Putzke.
 
-# 1. Einführung und Ziele
+# 1. Einführung und Ziele ᡣ𐭩 •｡ৎ ˚⋅
 
 Die zu entwickelnde App zielt darauf ab, postoperative Komplikationen bei Patienten, insbesondere Sepsis, nach Herzschrittmacher-Operationen frühzeitig zu erkennen, sobald diese die stetige Überwachung des Krankenhauses verlassen haben. Dies geschieht durch den Einsatz von Wearables, die relevante Vitalparameter kontinuierlich messen und zusammen mit Patient Reported Outcomes (PROs) und elektronischen Gesundheitsakten (EHRs) dem medizinischen Personal visualisiert werden.
 
 Das primäre Ziel der App ist es, die Überwachung der Patienten auch nach der Entlassung fortzusetzen, um eine frühzeitige Erkennung von Komplikationen zu ermöglichen. Dadurch wird die Qualität der Patientenversorgung verbessert und potenzielle Risiken minimiert.
 
 ## Aufgabenstellung
-Die Anwendung muss folgende funktionale Anforderungen erfüllen:
-- **Kontinuierliche Überwachung von Vitalwerten** (z.B. Temperatur, Herzfrequenz, Atemfrequenz) mittels Wearables.
-- **Eingabe von PROs** über eine mobile App.
-- **Warnsystem** zur Benachrichtigung des medizinischen Personals.
-- **Visualisierung der Gesundheitsdaten** in Dashboards.
+
+Die Aufgabe wurde in 3 Use Cases geteielt:
 
 | Use Case | Beschreibung |
 |----------|--------------|
-| UC-01    | Erfassung von Daten über die Patienten |
-| UC-02    | Visualisierung der Daten |
-| UC-03    | Integration der Daten |
+| UC-01    | Erfassung von Daten über die Patienten durch PRO oder Smartwatch |
+| UC-02    | Integration/Analyse der Daten |
+| UC-03    | Visualisierung der Daten und ggf. Warnungen senden |
 
 ## Qualitätsziele
+
+Die Qualitätsziele sind wie folgt:
 
 | Ziel                           | Beschreibung |
 |---------------------------------|--------------|
@@ -29,17 +28,40 @@ Die Anwendung muss folgende funktionale Anforderungen erfüllen:
 | **Sicherheit und Datenschutz**  | Die App muss höchsten Sicherheitsstandards entsprechen, um sensible Patientendaten zu schützen. |
 | **Benutzerfreundlichkeit**      | Das System muss über eine intuitive Bedienung sowie effektive Oberfläche verfügen. |
 
+## Qualitätsszenarien
+
+Aus den Qualitätszielen entspringen u. a. die folgenden Qualitätsszenarien:
+
+### 1. Zuverlässigkeit
+- **Stimulus:** Die App empfängt kontinuierlich Vitaldaten eines Patienten nach einer Herzoperation.
+- **Gegenstand/Artefakt:** Verarbeitung der Vitaldaten durch die App.
+- **Antwort:** Die App erkennt Anzeichen einer Sepsis und gibt eine Warnung aus.
+- **Antwortmaß:** 100% der Sepsis-Anzeichen werden auch als Warnung ausgegeben.
+
+### 2. Sicherheit und Datenschutz
+- **Stimulus:** Patientendaten werden an die App übermittelt und verarbeitet.
+- **Gegenstand/Artefakt:** Sicherheitsmechanismen der App (z. B. Verschlüsselung, Zugriffsbeschränkungen).
+- **Antwort:** Die Daten werden sicher gespeichert und nur autorisierten Personen zugänglich gemacht.
+- **Antwortmaß:** Einhaltung von Standards wie der DSGVO; keine Datenlecks (selbst wenn die DB gehackt wurde) oder unautorisierte Zugriffe.
+
+### 3. Benutzerfreundlichkeit
+- **Stimulus:** Ein Patient gibt manuell Daten (PRO) in die App ein.
+- **Gegenstand/Artefakt:** Benutzeroberfläche der App.
+- **Antwort:** Der Benutzer kann die Daten problemlos und schnell eingeben, und die App liefert klare Bestätigungen oder Fehlermeldungen. Zeitgleich werden unbemerkt Daten von der Uhr ausgelesen.
+- **Antwortmaß:** Maximale 1 Klick nach Login bis zur PRO Eingabe und keine Anzeichen von der Datenerfassung auf der Uhr im Hintergrund, außer ggf. Fehler, die der Patient einfach beheben könnte.
+
+
 ## Stakeholder
+
+An der App sind beteiligt:
 
 | Rolle/Name                    | Kontakt                      | Erwartungen |
 |-------------------------------|------------------------------|-------------|
 | **Medizinisches Personal**     | Krankenhaus                   | Zuverlässige und rechtzeitige Warnungen bei Komplikationen, klare Visualisierungen der Gesundheitsdaten. |
 | **Patienten**                  | Herzschrittmacher-Patienten   | Einfache Bedienbarkeit der App zur Eingabe von PROs, Vertrauen in die Datensicherheit. |
 | **Entwicklungsteam**           | Softwareentwickler der BTU    | Klare Spezifikationen und Anforderungen zur Umsetzung der App. |
-| **Biotronik**                  | Industriepartner              | Einblicke in die prototypische Implementierung von Home Monitoring durch Wearable-Technologie. |
-| **Datenschutzbeauftragter**    | Interne Datenschutzabteilung  | Einhaltung der Datenschutzrichtlinien, insbesondere bei der Nutzung sensibler Gesundheitsdaten. |
 
-# 2. Randbedingungen
+# 2. Randbedingungen ≽^• ˕ • ྀི≼
 In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die die Softwarearchitekten bei ihren Design- und Implementierungsentscheidungen sowie im Entwicklungsprozess beachten müssen. Diese Einschränkungen können technischer, organisatorischer oder rechtlicher Natur sein und beeinflussen maßgeblich die Architektur der Anwendung.
 
 ### Technische Bedinungen
@@ -63,19 +85,15 @@ In diesem Abschnitt werden die wesentlichen Einschränkungen beschrieben, die di
 
 ### Konventionen
 
-<!-- LL: techn. Spezifikationen werden nur von den Architects erstellt, nicht von den SWP Studierenden. Bitte bei den Stakeholdern einen Unterschied machen zwischen Studierenden im Softwarepraktikum und die unterschiedliche Arten von Coaches (Agile bzw. Architects & Quality Coaches) -->
-
 | Constraint                                   | Beschreibung |
 |----------------------------------------------|--------------|
-| **Programmierrichtlinien**                   | Es gelten die allgemeinen Programmierstandards für Java/Kotlin _(s.t.c)_ auf Android, insbesondere saubere Code-Architektur. |
+| **Programmierrichtlinien**                   | Es gelten die allgemeinen Programmierstandards für Java auf Android, insbesondere saubere Code-Architektur. |
 | **Versionsverwaltung**                       | Die Versionskontrolle erfolgt über Git, und alle Teammitglieder müssen strikte Branching- und Merging-Richtlinien befolgen. |
 | **Dokumentationsanforderungen**              | Eine kontinuierliche und strukturierte Projektdokumentation ist erforderlich. |
 
-# 3. Kontextabgrenzung
+# 3. Kontextabgrenzung ✩₊˚.⋆☾⋆⁺₊✧
 
 Dieser Abschnitt beschreibt den Systemkontext und grenzt das System von seinen Kommunikationspartnern (Nutzern und anderen Systemen) ab. Es wird definiert, welche externen Schnittstellen für den Austausch von Daten relevant sind.
-
-<!-- LL: Visualisierungen des Kontexts hinzufügen, siehe HTML Sanity Checker für Beispieldiagramme -->
 
 ## Fachlicher Kontext
 
@@ -132,42 +150,115 @@ flowchart TD
 | **EHR-System des Krankenhauses**| Direkte Integration über Krankenhausnetzwerk | FHIR (Fast Healthcare Interoperability Resources) Standard |
 | **Wearables (Samsung Galaxy Watch 6)**| Bluetooth-Verbindung zu Smartphones     | Bluetooth LE, Wear OS API                  |
 
-Der Synthea-Datensatz wird zunächst offline und später in einer serverbasierten Umgebung bereitgestellt, um eine testweise Integration zu simulieren.
 
-# 4. Lösungsstrategie
+# 4. Lösungsstrategie ⋆*˚｡⋆
 
-# 5. Bausteinsicht
+Das Problem soll mithilfe der Berücksichtigung folger Punkte gelöst werden:
 
-# 6. Laufzeitsicht
+1. **Architekturansatz:**  
+   - **Schichtenarchitektur:**  
+     Das System ist in klar getrennte Schichten unterteilt:  
+     - Frontend: Patienten-App und Ärzte-Webinterface.  
+     - Backend: Server mit Authentifizierung, Benutzerverwaltung, Datenaufnahme und Analysemodul.  
+     - Datenhaltung: Patientendaten- und Benutzer-Datenbank.  
 
-# 7. Verteilungssicht
+2. **Technologieauswahl:**  
+   - **Frontend:**  
+     - Patienten-App: Native App mit **Java (Android)** für optimale Leistung und Zugriff auf native Gerätefunktionen wie Sensoren.  
+     - Ärzte-Webinterface: Webanwendung mit **Java (Spring Boot)** für hohe Flexibilität und einfache Verfügbarkeit.  
+   - **Backend:**  
+     - Server: Java-basierter Ansatz für die zentrale Verarbeitung und Integration.  
+   - **Datenbanken:**  
+     - **ENTWEDER:** Relationale Datenbanken wie **PostgreSQL** oder **MySQL** zur >strukturierten< Speicherung und Abfrage der Benutzerdaten und Vitalwerte.
+     - **ODER:** JSON Datenbanken wie **MongoDB** oder **Google Firebase Realtime Database**, zur >unstrukturierten< Speicherung der Daten.
 
-# 8. Querschnittliche Konzepte
+3. **Datenintegration:**  
+   - **Smartwatch-API:**  
+     - Integration mit APIs der Smartwatch-Hersteller (z. B. Google Fit) zur kontinuierlichen Erhebung von Vitalwerten.  
+   - **Benutzerinteraktion:**  
+     - Zusätzliche Eingabe von Daten durch Patienten über das PRO-Feld in der App.  
 
-# 9. Architekturentscheidungen
+4. **Sicherheitsstrategie:**  
+   - **Authentifizierung und Autorisierung:**  
+     - Zentrale Authentifizierung mit z. B. **Google Firebase Authentication**, **OAuth2** oder **JWT (JSON Web Token)** und **Spring Security** zur sicheren Kommunikation zwischen den Komponenten.  
+     - Trennung der Benutzerrollen (Patient/Arzt).  
+   - **Datenschutz:**  
+     - Verschlüsselte Speicherung (z. B. AES-256) aller Daten in der Datenbank.  
+     - Verwendung von HTTPS für die gesamte Kommunikation.  
 
-# 10. Qualitätsanforderungen
+5. **Fehler- und Ausnahmebehandlung:**  
+   - **Robuste Kommunikation:**  
+     - Retries (oder sogar Fallbacks) für die Kommunikation mit der Smartwatch-API und der Benachrichtigungsinfrastruktur.  
+   - **Datenvalidierung:**  
+     - Validierung von Eingabedaten sowohl auf App- als auch auf Serverseite, um inkonsistente oder fehlerhafte Daten zu vermeiden.  
 
-# 11. Risiken und technische Schulden
+6. **Skalierbarkeit und Erweiterbarkeit:**  
+   - **Modularer Aufbau:**  
+     - Komponenten wie Analysemodul oder Benachrichtigungsmodul sind isoliert und können unabhängig weiterentwickelt werden.  
+   - **Cloud-basierter Ansatz:**  
+     - Möglichkeit, die Server- und Datenbankkomponenten auf Cloud-Umgebungen wie z. B. **Google Firebase**, **AWS** oder **Azure** zu deployen.  
 
-# 12. Glossar
+7. **Benachrichtigungen:**  
+   - Verwendung von z. B. **Push-Benachrichtigungen**, **SMS** oder **E-Mails**, um Patienten aktiv auf kritische Werte oder Eingabefristen hinzuweisen.  
 
-| Begriff        | Definition        |
-|----------------|-------------------|
-| EHR            | Electronic Health Record (Elektronische Patientenakte) |
-| PRO            | Patient Reported Outcome |
-| Sepsis         | Lebensbedrohliche Komplikation einer Infektion, die zu Organversagen führen kann |
-| Wearable       | Am Körper getragenes elektronisches Gerät zur Messung von Gesundheitsdaten |
-| DSGVO          | Datenschutz-Grundverordnung |
-| Frühdiagnose   | Erkennung einer Krankheit in einem frühen Stadium |
-| Herzschrittmacher | Implantierbares medizinisches Gerät zur Regulierung des Herzrhythmus |
-| Postoperative Komplikation | Unerwünschte Folge nach einer Operation |
-| Synthea-Datensatz | Synthetisch generierter Datensatz für medizinische Forschung und Entwicklung |
-| Medizinisches Personal | Ärzte, Pflegekräfte und andere Gesundheitsfachkräfte |
-| Visualisierung  | Grafische Darstellung von Daten zur besseren Verständlichkeit |
-| Richtlinie     | Festgelegte Regeln oder Grenzwerte für medizinische Parameter |
+# 5. Bausteinsicht (´｡•᎑•`)っ <3
+![Bausteinsicht](images/arc42-5.png)
 
-# arc42-Template
+# 6. Laufzeitsicht ⋆⁺₊❅.
+## Daten erheben und speichern(/integrieren) 
+![Laufzeitsicht-erheben](images/arc42-6-erheben.png)
+
+## Daten anzeigen und analysieren
+![Laufzeitsicht-anzeigen](images/arc42-6-anzeigen.png)
+
+## Nutzer verwalten
+Die Nutzerverwaltung setzt voraus, dass der Arzt eingeloggt ist
+![Laufzeitsicht-nutzer-verwalten](images/arc42-6-nutzerverwaltung.png)
+
+# 7. Verteilungssicht ₊✩‧₊˚౨ৎ˚₊✩‧₊
+![Verteilungssicht](images/arc42-7.png)
+
+# 8. Querschnittliche Konzepte 𓅰 𓅬 𓅭 𓅮 𓅯
+
+# 9. Architekturentscheidungen ₊˚ʚ ᗢ₊˚✧ ﾟ.
+
+# 10. Qualitätsanforderungen ˖⁺‧₊˚♡˚₊‧⁺˖
+
+# 11. Risiken und technische Schulden ⋆༺𓆩☠︎︎𓆪༻⋆
+
+# 12. Glossar ١٥٧٤♡
+
+Mit dem Glossar versuchen wir, alle ggf. unklaren Worte in dem Dokument zu definieren:
+
+| Begriff                  | Definition                                                                                  |
+|--------------------------|---------------------------------------------------------------------------------------------|
+| EHR                      | Electronic Health Record (Elektronische Patientenakte)                                     |
+| PRO                      | Patient Reported Outcome                                                                   |
+| Sepsis                   | Lebensbedrohliche Komplikation einer Infektion, die zu Organversagen führen kann           |
+| Wearable                 | Am Körper getragenes elektronisches Gerät zur Messung von Gesundheitsdaten                 |
+| DSGVO                    | Datenschutz-Grundverordnung                                                               |
+| Frühdiagnose             | Erkennung einer Krankheit in einem frühen Stadium                                         |
+| Herzschrittmacher        | Implantierbares medizinisches Gerät zur Regulierung des Herzrhythmus                       |
+| Postoperative Komplikation | Unerwünschte Folge nach einer Operation                                                  |
+| Synthea-Datensatz        | Synthetisch generierter Datensatz für medizinische Forschung und Entwicklung               |
+| Medizinisches Personal   | Ärzte, Pflegekräfte und andere Gesundheitsfachkräfte                                      |
+| Visualisierung           | Grafische Darstellung von Daten zur besseren Verständlichkeit                             |
+| Richtlinie               | Festgelegte Regeln oder Grenzwerte für medizinische Parameter                             |
+| Patienten-App            | Mobile Applikation (Android, Java) zur Eingabe und Anzeige von Gesundheitsdaten durch Patienten |
+| Ärzte-App                | Webinterface (Java, Spring Boot) zur Verwaltung und Einsicht von Patientendaten durch Ärzte |
+| Authentifizierungslogik  | Komponente zur sicheren Überprüfung der Benutzeridentität                                 |
+| Benutzerverwaltung       | Mechanismus zur Pflege und Steuerung von Benutzerrollen, Anmeldedaten und Berechtigungen  |
+| Analysemodul             | Backend-Komponente zur kontinuierlichen Überwachung und Analyse von Gesundheitsdaten      |
+| Benachrichtigungsmodul   | System zur Kommunikation kritischer Ereignisse oder Erinnerungen an Benutzer              |
+| Benachrichtigszugriff    | Schnittstelle in der Patienten-App zur Anzeige von Benachrichtigungen                     |
+| Datenaufnahme-Service    | Backend-Komponente zur Verarbeitung und Speicherung eingehender Daten (z. B. Vitalwerte)  |
+| Smartwatch-API           | Schnittstelle zur Erhebung von Vitaldaten über Wearables                                  |
+| Patientendaten-DB        | Datenbank zur Speicherung von Gesundheitsdaten der Patienten                              |
+| Benutzer-DB              | Datenbank zur Speicherung von Benutzerdaten und Berechtigungen                           |
+| Verteilungssicht         | Darstellung, wie die Systemkomponenten physisch oder logisch auf Infrastruktur verteilt sind |
+| Laufzeitsicht            | Modell der dynamischen Interaktionen zwischen Systemkomponenten in spezifischen Szenarien |
+
+# arc42-Template (ෆ˙ᵕ˙ෆ)♡
 
 Dieses Dokument folgt dem arc42-Template zur Dokumentation von Software- und Systemarchitekturen.
 
